@@ -1,4 +1,4 @@
-# Code by Salman Mallah
+#   Code by Salman Mallah
 lsOne = [6, 2, 3, 4, 5, 1]
 lsTwo = [1, 2, 3, 4, 5, 6]
 
