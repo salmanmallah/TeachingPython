@@ -9,6 +9,6 @@ def evenodd(l):
     return [even, odd]
 
 
-unsorted_list = []
-numbers = int(input('Enter Numbers: '))
+unsorted_list = [3, 2, 1, 4, 7, 5, 6, 9, 8, 10, 12]
+print(evenodd(unsorted_list))
 
