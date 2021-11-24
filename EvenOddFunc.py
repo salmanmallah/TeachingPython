@@ -9,5 +9,5 @@ def evenodd(l):
     return [even, odd]
 
 
-unsorted_list = [9,1,3,2,6,5,8,7]
+unsorted_list = [9, 1, 3, 2, 6, 5, 8, 7]
 print(evenodd(unsorted_list))
