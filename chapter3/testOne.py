@@ -16,7 +16,7 @@
 
 import random
 
-winning_number = 5 #random.randint(1, 10)
+winning_number = random.randint(1, 10)
 
 guess_number = int(input('Guess any number to win the game : '))
 attempt = 0
