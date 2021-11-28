@@ -6,10 +6,10 @@ import webbrowser as web
 import time as t
 
 name = input('Enter your name : ')
-age = input('Enter your age : ')
+age = int(input('Enter your age : '))
 
-if name == 'salman'.upper() and int(age) == 20:
-    t.sleep(2)
+if name == 'salman' and age == 20:
+    t.sleep(0.5)
     print("Results loading... %25")
     t.sleep(0.5)
     print("        loading... %50")
@@ -18,5 +18,8 @@ if name == 'salman'.upper() and int(age) == 20:
     t.sleep(1.5)
     print("        loading... %100")
     t.sleep(1)
-    print("\n Your performance has been successfully analyzed...")
-    web.open("https/:www.youtube.com")
+    print("\n Your Identity has been successfully Matched...")
+    t.sleep(3)
+    print("\n Opening your url...")
+    t.sleep(2)
+    web.open('https://www.youtube.com/watch?v=gPnfbTTsVl4&ab_channel=WaqasNasir', 1, autoraise=True)
