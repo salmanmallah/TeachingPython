@@ -13,7 +13,7 @@
 """
 age = int(input('Enter you age to check ticket price : '))
 if age == 0 or age < 0:
-    print('invalid ages')
+    print('invalid age')
 elif 0 < age <= 3:
     print('Your ticket price is free')
 elif 3 < age <= 10:
