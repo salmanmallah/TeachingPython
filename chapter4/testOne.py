@@ -6,3 +6,14 @@
 
 """
 
+
+def greaterNumber(x, y):
+    if x == y:
+        return 'Both numbers are Equal'
+    elif x > y:
+        return f'{x} is greater'
+    else:
+        return f'{y} is greater'
+
+
+print(greaterNumber(-5, -10))
