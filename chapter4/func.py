@@ -8,7 +8,22 @@
                 statements
 """
 
-def add_three(a, b, c):
-    print(a+b+c)
 
-add_three(3,45,5)
+def add_three(a, b, c):
+    return a + b + c
+
+
+# calling of function
+# print(add_three(3, 45, 5))
+
+
+'''Check Odd or Even'''
+
+
+def odd_even(num):
+    if num % 2 == 0:
+        return 'Even'
+    return 'Odd'
+
+
+print(odd_even(8))
