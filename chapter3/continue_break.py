@@ -15,7 +15,7 @@ for i in range(1, 100):
 
 # 1 to 10 print
 print(
-    'break keyword'.center(30 ,'*')
+    'break keyword'.center(30, '*')
 )
 for i in range(1, 20):
     ranNumber = random.randint(1, 10)
