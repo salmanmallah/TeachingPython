@@ -26,4 +26,9 @@ def odd_even(num):
     return 'Odd'
 
 
-print(odd_even(8))
+def last_char(name):
+    return name[-1]
+
+
+print(last_char('salman'))
+
