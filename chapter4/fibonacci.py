@@ -5,7 +5,6 @@
 
 
 def fibonacci_seq(n):
-    n = 10
     a = 0
     b = 1
     if n == 1:
@@ -19,3 +18,6 @@ def fibonacci_seq(n):
             a = b
             b = c
             print(b, end=" ")
+
+
+fibonacci_seq(10)
