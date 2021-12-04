@@ -19,7 +19,12 @@
         lists are mutable in python.
 """
 number = [1, 2, 3, 4, 5]
-print(number[:2])
+print(number)
+
+
+# mutability of list
+number[0] = 'ONE'
+print(number)
 
 # https://www.youtube.com/watch?v=uRXE8bN4WE4&ab_channel=NOMANSADIQ
 
