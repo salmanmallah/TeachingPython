@@ -22,3 +22,6 @@ number = [1, 2, 3, 4, 5]
 print(number[:2])
 
 # https://www.youtube.com/watch?v=uRXE8bN4WE4&ab_channel=NOMANSADIQ
+
+
+
