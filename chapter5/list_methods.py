@@ -32,3 +32,24 @@ empty_list = animal + vowels
 '''
     DELETE DATA FROM LIST
 '''
+passwords = ['salman', 'namlas06', 'google.com.com.com']
+
+# pop() method
+# print(passwords)
+# print(passwords.pop(1))
+# print(passwords)
+
+# del operator
+# print(passwords)
+# del passwords[1]
+
+# remove() method
+passwords.remove('namlas06')
+print(passwords)
+
+
+name = input("enter your name : ")
+if name in passwords:
+    print('password found in data base')
+else:
+    print('not found ')
