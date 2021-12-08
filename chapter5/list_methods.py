@@ -1,6 +1,19 @@
 """
     CHAPTER 5
-    - METHOD TO ADD DATA IN LIST
+    - method to add data in list
+     append()
+        Add a single element to the end of the list
+     insert()
+        insert an element to the list
+    extend()
+        adds iterable elements to the end of the list
+
+
+    pop()
+        Removes element at the given index
+    remove()
+        Removes item from the list
+
 """
 animal = ['Cat', 'Dog', 'Elephant']
 
