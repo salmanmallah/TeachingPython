@@ -12,10 +12,12 @@ def filter_numbers(l):
     for i in range(len(l)):
         if l[i] % 2 == 0:
             even.append(l[i])
-            filtered_elements.append
+            # filtered_elements.append(even)
         else:
             odd.append(l[i])
-            filtered_elements.append(odd)
-        return filtered_elements
+            # filtered_elements.append(odd)
+    filtered_elements.append(odd)
+    filtered_elements.append(even)
+    return filtered_elements
 
 print(filter_numbers(list(range(1, 11))))
