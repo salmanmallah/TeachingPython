@@ -27,3 +27,17 @@ word_tuple = ('salman',)
 
 print(type(word_tuple))
 print(type(oneElementTuple))
+
+
+'''
+    TUPLE WITHOUT PARANTHESIS
+'''
+bikes = 'HONDA', 'CD', 'UNIQUE', 'DIAMOND', 'HI SPEED'
+print(type(bikes))
+
+'''
+    Tuple unpacking
+'''
+my_tuple = ('HONDA', 'CD', 'UNIQUE')
+bikeOne, bikeTwo, bikeThree = my_tuple
+print(bikeOne)

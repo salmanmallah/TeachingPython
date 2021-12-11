@@ -14,4 +14,6 @@ def reverse_elements(l):
     for e in l:
         rev_element.append(e[::-1])
     return rev_element
+
+
 print(reverse_elements(['abc', 'tuv', 'xyz']))
