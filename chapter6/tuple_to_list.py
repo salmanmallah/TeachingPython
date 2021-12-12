@@ -5,6 +5,7 @@
 num_tuple = tuple(range(1, 11))
 
 print(num_tuple)
+
 list(num_tuple)
 print(
     type(num_tuple)
