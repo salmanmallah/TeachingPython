@@ -13,6 +13,8 @@
 """
 
 user_info = {'key': 'value', 'name':'salman', 'age': 20}
-print(
-    user_info
-)
+
+second_dict = dict(name='salman', age=20, sex='male')
+print(second_dict)
+
+print(second_dict['name'])
