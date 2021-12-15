@@ -14,7 +14,7 @@
 
 user_info = {'key': 'value', 'name':'salman', 'age': 20}
 
-second_dict = dict(name='salman', age=20, sex='male')
+second_dict = dict(1='salman', age=20, sex='male')
 print(second_dict)
 
-print(second_dict['name'])
+print(second_dict[1])

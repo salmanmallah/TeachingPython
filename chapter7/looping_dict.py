@@ -46,6 +46,15 @@ user_info = {
     'fav_mobile' : 'Xiomi 120 watt charing'
 }
 
+# printing dict keys
+for i in user_info:
+    print(i)
+
+# printing dict values
+for i in user_info.values():
+    print(type(i))
+
+
 for key, value in user_info.items():
     print(f"key is : {key} = {value} ")
 
