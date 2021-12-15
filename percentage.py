@@ -1,12 +1,13 @@
 # calculate percentage of given amount by user.
-totalAmount = int(input('Enter you total amount : '))
-getPercentage = int(input('percentage you want to know: '))
+percent = float(input('percentage: '))
+totalamount = float(input('total amount: '))
 
 
-def Givepercentage(amount, percentage):
-    quotients = percentage / amount
-    answer = quotients * 100
+def Givepercentage(percentage, amount):
+    # formula is : (p ➗ 100) * total amount = answer
+    answer = (percentage / 100) * amount
     print(f'{percentage}% of {amount} is {answer}')
 
 
-Givepercentage(totalAmount, getPercentage)
+Givepercentage(percent, totalamount)
+
