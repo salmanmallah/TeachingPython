@@ -13,8 +13,7 @@
         * So 10% of 150 is 15
         * Double check your answer with the original question: What is 10% of 150? Multiply 0.10 * 150 = 15
 
-            :FORMULA IS : (p ➗ 100) * total amount = answer
-
+            :FORMULA IS : (P ➗ 100) * total amount = answer
 """
 
 
