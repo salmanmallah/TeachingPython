@@ -13,4 +13,6 @@ forward = ['abc','tub', 'xyz']
 # print(reverse_list)
 
 def reverse_elements(l):
-    return [e[::-1] for e in l]
+    return [e[::-1] for e    in l]
+
+
