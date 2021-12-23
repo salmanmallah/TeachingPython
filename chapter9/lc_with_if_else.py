@@ -1,6 +1,6 @@
 """
     CHAPTER 9
-    TUTORIAL NO. 139.
+    TUTORIAL NO. 134.
     LIST COMPREHENSION WITH if-else STATEMENT
 """
 
@@ -16,3 +16,5 @@ for i in numbers:
 print(empty_list)
 
 # now with list comprehension
+even_odd_neg = [i*2 if (i % 2 == 0) else -i for i in numbers]
+print(even_odd_neg)
