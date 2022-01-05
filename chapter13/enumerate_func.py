@@ -15,8 +15,8 @@ name = ['abc', 'abcdef', 'salman', 'Rimsha']
 #     print(f"{i} --------> '{name[i]}'")
 
 # with enumerate() function
-# for pos, name in enumerate(name):
-#     print(f'{pos} --> {name}')
+for pos, name in enumerate(name):
+    print(f'{pos} --> {name}')
 
 
 
@@ -26,13 +26,13 @@ name = ['abc', 'abcdef', 'salman', 'Rimsha']
 # and this function will return the index of string in your list and
 # if string is not present then return -1
 
-def find_me(l, find_name):
-    for pos, name in enumerate(l):
-        if name == find_name:
-            return pos
-    return -1
-
-
-print(
-    find_me(name, 'Rimsha')
-)
+# def find_me(l, find_name):
+#     for pos, name in enumerate(l):
+#         if name == find_name:
+#             return pos
+#     return -1
+#
+#
+# print(
+#     find_me(name, 'Rimsha')
+# )
