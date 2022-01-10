@@ -3,8 +3,8 @@
     LAMBDA EXPRESSION
 """
 
-add = lambda a, b : a + b
-print(add(10,30))
+add = lambda a, b: a + b
+print(add(10, 30))
 
-product = lambda a, b : a * b
-print(product(2,10))
+product = lambda a, b: a * b
+print(product(2, 10))
