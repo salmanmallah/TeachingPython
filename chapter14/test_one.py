@@ -1,6 +1,6 @@
 """
     CHAPTER NO. 14
-    TUTORIAL NO 173
+    TUTORIAL NO 173 | 174
     TEST ONE
 """
 from functools import wraps
