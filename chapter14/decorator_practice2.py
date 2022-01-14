@@ -18,14 +18,14 @@ def only_int_allow(function):
         return 'Invalid argument'
     return wrapper
 
-    args_data = []
-    for i in args:
-        args_data.append(type(i) == int)
-    if all(args_data):
-        return function(*args, **kwargs)
-    else:
-        return f'Invalid argument'
-    return wrapper
+    # args_data = []
+    # for i in args:
+    #     args_data.append(type(i) == int)
+    # if all(args_data):
+    #     return function(*args, **kwargs)
+    # else:
+    #     return f'Invalid argument'
+    # return wrapper
 
 
 @only_int_allow

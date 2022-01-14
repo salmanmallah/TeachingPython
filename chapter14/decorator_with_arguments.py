@@ -18,3 +18,12 @@ def only_data_type_allow(data_type):
     return decorator
 
 
+@only_data_type_allow(str)
+def string_join(*args, **kwargs):
+    string = ''
+    for i in args:
+        string += i
+    return string
+
+
+print(string_join(1, 2, 3))
