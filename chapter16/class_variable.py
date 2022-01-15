@@ -1,12 +1,15 @@
 """
     CHAPTER NO. 16
-    TUTORIAL NO. 190
+    TUTORIAL NO. 190 | 191
     OOP - CLASS VARIABLE
+
+    Instance variable or object variable are two names of same thing
+
 """
 
 
 class Laptop:
-    discount = 10 # this is class variable
+    discount_percent = 50  # this is class variable
 
     def __init__(self, brand_name, model, price):
         # instance variable
@@ -16,9 +19,22 @@ class Laptop:
 
     def apply_discount(self):
         price = self.price
-        percentage = (Laptop.discount * price) / 100
+        percentage = (self.discount_percent * price) / 100
         return f'Total Price : {price}\nDiscounted Price is {price - percentage}'
 
 
-buy_laptop = Laptop('hp', 'Latitude e5540', 63000)
-print(buy_laptop.apply_discount())
+buy_laptop1 = Laptop('hp', 'Latitude e5540', 100)
+buy_laptop2 = Laptop('dell', 'atutx', 100)
+
+buy_laptop2.discount_percent = 25
+print(buy_laptop2.__dict__)
+print(buy_laptop2.apply_discount())
+
+# print(buy_laptop1.__dict__)
+
+
+# buy_laptop2.discount = 50
+# print(buy_laptop2.apply_discount())
+# print(buy_laptop2.__dict__)
+
+
