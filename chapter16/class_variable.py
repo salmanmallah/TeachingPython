@@ -1,24 +1,24 @@
 """
     CHAPTER NO. 16
-    TUTORIAL NO. 188 | 189
-    EXERCISE NO 2 | SOLUTION
-
-
+    TUTORIAL NO. 190
+    OOP - CLASS VARIABLE
 """
 
 
 class Laptop:
+    discount = 10 # this is class variable
+
     def __init__(self, brand_name, model, price):
         # instance variable
         self.brand = brand_name
         self.model = model
         self.price = price
 
-    def apply_discount(self, discount):
+    def apply_discount(self):
         price = self.price
-        percentage = (discount * price) / 100
+        percentage = (Laptop.discount * price) / 100
         return f'Total Price : {price}\nDiscounted Price is {price - percentage}'
 
 
 buy_laptop = Laptop('hp', 'Latitude e5540', 63000)
-print(buy_laptop.apply_discount(5))
+print(buy_laptop.apply_discount())
