@@ -16,7 +16,7 @@ class Laptop:
 
     def apply_discount(self, discount):
         total = self.price
-         = (discount * )
+
 
 
 
