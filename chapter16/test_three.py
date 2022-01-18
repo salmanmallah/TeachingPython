@@ -2,6 +2,7 @@
     CHAPTER NO. 16
     TUTORIAL NO. 192 | 193
     OOP - EXERCISE THREE
+    count class objects
 """
 # from itertools import count
 #

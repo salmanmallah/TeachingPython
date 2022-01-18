@@ -30,11 +30,8 @@ buy_laptop2.discount_percent = 25
 print(buy_laptop2.__dict__)
 print(buy_laptop2.apply_discount())
 
-# print(buy_laptop1.__dict__)
-
-
-# buy_laptop2.discount = 50
-# print(buy_laptop2.apply_discount())
-# print(buy_laptop2.__dict__)
+buy_laptop1.discount_percent = 100
+print(buy_laptop1.apply_discount())
+print(buy_laptop1.__dict__)
 
 

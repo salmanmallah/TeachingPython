@@ -1,7 +1,8 @@
 """
     CHAPTER NO. 16
-    TUTORIAL NO. 195
-    OOP - CLASS METHODS AS CONSTRUCTOR
+    TUTORIAL NO. 196
+    OOP - STATIC METHOD
+    this method is not belongs to object or class but this method has logical relationship with class and object
 """
 
 
@@ -14,7 +15,6 @@ class Person:
         self.cast = person_cast
         self.age = person_age
 
-    # this class method we learn in this tutorial how to just pass one single string in person class'name,cast,age'
     @classmethod
     def from_string(cls, string):
         fname, lname, age = string.split(',')
@@ -23,6 +23,10 @@ class Person:
     @classmethod
     def count_class_object(cls):
         return f"you have created {cls.count_instance} objects of {cls.__name__} Class"
+
+    @staticmethod
+    def hello():
+        print('Hello static method called!!!')
 
     def full_name(self):
         return f"{self.name} {self.cast}"
@@ -36,9 +40,7 @@ personTwo = Person('noman', 'mallah', 16)
 personThree = Person('akram', 'mallah', 40)
 personFour = Person.from_string('jack, ob, 50')
 
-print(Person.count_class_object())
-print(personOne.name)
-print(personTwo.name)
-print(personThree.name)
-print(personFour.name)
+# print(Person.count_class_object())
+# Person.hello()
+
 print(personFour.age)
