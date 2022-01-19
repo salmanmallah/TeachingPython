@@ -37,14 +37,6 @@ class Smartphone(Phone):  # derived / child class
         self.memory = internal_memory
         self.camera = rare_camera
 
-    @staticmethod
-    def make_a_call(phone_number):
-        return f'Calling {phone_number} ...'
-
-    def full_name(self):
-        return f'{self.brand} {self.name}'
-
-
 # time.sleep(1)
 # brand = input('Inter your Mobile Brand : ')
 # time.sleep(1)
