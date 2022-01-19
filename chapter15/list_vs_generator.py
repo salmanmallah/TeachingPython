@@ -11,8 +11,8 @@
 import time
 
 t1 = time.time()
-# l = [i ** 2 for i in range(10000000)]
-g = (i**2 for i in range(10000000))
+# l = [i ** 2 for i in range(100000000)]
+g = (i**2 for i in range(100000000))
 t2 = time.time()
 print(f'time taken is ({round(t2 - t1, 2)})')
 
