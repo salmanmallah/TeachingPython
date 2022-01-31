@@ -4,7 +4,7 @@
 
         Word counter with dictionary.
         word = salman
-        {s: 1, a : 2, l: 1, m: 1, n: 1}
+        {s: 1, a : 2, l: 1, m: 1, lines: 1}
 """
 
 

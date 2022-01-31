@@ -38,7 +38,7 @@ students = {
 # for key, value in students.items():
 #     for subkey in value.items():
 #         time.sleep(1)
-#         print(f'{key}:\n{subkey}\n')
+#         print(f'{key}:\lines{subkey}\lines')
 
 # for key, value in students.items():
 

@@ -1,7 +1,7 @@
 """
     Chapter 7
     Test One
-        -Define a function that takes a number(n)
+        -Define a function that takes a number(lines)
         -Return a dictionary containing cube of numbers from 1 to 3.
 
         example
