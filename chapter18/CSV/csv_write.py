@@ -1,6 +1,6 @@
 """
     CHAPTER NO. 18
-    TUTORIAL NO. 225
+    TUTORIAL NO. 224
 """
 
 from csv import writer

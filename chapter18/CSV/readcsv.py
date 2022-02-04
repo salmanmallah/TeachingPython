@@ -1,6 +1,6 @@
 """
     CHAPTER NO. 18
-    TURORIAL NO. 223
+    TURORIAL NO. 223c
 """
 
 from csv import reader
