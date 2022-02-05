@@ -39,7 +39,7 @@
 
 
 # name(), closed() method
-f = open(r"C:\Users\CCS LAPTOP HYD\Desktop\life.rules.txt")
+f = open('life_rules.txt')
 # print(f.name)
 # print(f.closed)
 # f.close()
