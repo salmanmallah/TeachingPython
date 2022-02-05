@@ -35,4 +35,4 @@ Chapter 15 – Generators
 35. Chapter 34 – Regular Expression part 2
 36. Chapter 35 – Cryptography 
 37. Chapter 36 – one more gui application 
-38 . Chapter 37 –  Whats Next , Discussion
+38 . Chapter 37 –  What's Next , Discussion
