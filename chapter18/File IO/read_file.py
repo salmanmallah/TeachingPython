@@ -16,13 +16,13 @@
     close method
 """
 
-# open_file = open('life_rules.txt')
-# print(f'Cursor position {open_file.tell()}')
-# print(open_file.read())
-# print(f'Cursor position {open_file.tell()}')
-# open_file.seek(0)
-# print(open_file.read())
-# open_file.close()
+# f = open('life_rules.txt')
+# print(f'Cursor position {f.tell()}')
+# print(f.read())
+# print(f'Cursor position {f.tell()}')
+# f.seek(0)  # used seek function to change the position of cursor
+# print(f.read())
+# f.close()
 
 
 # readline method
@@ -34,18 +34,18 @@
 # readlines method
 # f = open('life_rules.txt')
 # lines = f.readlines()
-# print(len(lines))
+# print(lines)
 # f.close()
 
 
 # name(), closed() method
-f = open('life_rules.txt')
+# f = open('life_rules.txt')
 # print(f.name)
 # print(f.closed)
 # f.close()
 
 # you can use indexing with readlines method
-for line in f.readlines()[1:2]:
-    print(line, end="")
+# for line in f.readlines()[1:2]:
+#     print(line, end="")
 
-f.close()
+# f.close()
