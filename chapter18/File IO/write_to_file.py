@@ -12,8 +12,8 @@
 
 """
 # if you pass a argument (w) in open() function. it wile rewrite that file
-# with open('new_file.txt', 'w') as f:
-#     f.write('Salman is here')
+# with open('write_method.txt', 'a') as f:
+#     f.write('\ni am writing this text with write method')
 
 # if you pass argument (a) in open() function it will append data in file
 
