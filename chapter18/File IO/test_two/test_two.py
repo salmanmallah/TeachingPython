@@ -1,15 +1,12 @@
-"""
-    CHAPTER NO. 18
+""" CHAPTER NO. 18
     TUTORIAL NO 219 | 220 | 221
     TEST
-
     logic:
         page = '<a href="www.facebook.com">facebook</a>'
         pos = page.find('<a href=')
         ffind = page.find('"', pos)
         lfind = page.find('"', ffind+1)
         print(page[ffind+1:lfind])
-
 """
 # with open('index.html', 'r') as webpage:
 #     with open('output.txt', 'a') as output:
@@ -21,14 +18,12 @@
 #                 url = line[first_qoute+1:second_qoute]
 #                 output.write(f'{url}\n')
 
-
 """Tutorial no. 221 starts from here
     Better solution for test two
     Programmer: Salman    
 """
-
 with open('index.html', 'r') as webpage:
-    with open('output.txt', 'a') as wf:
+    with open('output.txt', 'w') as wf:
         page = webpage.read()
         link_exist = True
         while link_exist:
