@@ -1,0 +1,7 @@
+"""
+    CHAPTER NO 21
+    TUTORIAL NO. 231
+    FILE SEPARATOR APPLICATION
+    Python Project One
+    By: SALMAN MALLAH
+"""
