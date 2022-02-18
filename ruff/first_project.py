@@ -1,10 +1,11 @@
 import os
 import shutil
 
-os.chdir(r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials')
-path = r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials'
+os.chdir(r'C:\Users\CCS\OneDrive\Desktop\Separate files')
+path = r'C:\Users\CCS\OneDrive\Desktop\Separate files'
 
 dict_extension = {
+    'picture_extensions': ('.png', '.jpg', '.jpeg'),
     'audio_extensions': ('.mp3', '.m4a', '.wav', '.flac'),
     'document_extension': ('.docx', '.pdf', '.txt'),
     'video_extensions': ('.mp4', '.mkv', '.MKV', '.flv', '.mpeg')
@@ -20,12 +21,12 @@ def file_finder(folder_path, file_extension):
     return files
 
 
-# print(file_finder(path, ('.mp3', '.m4a', '.wav', '.flac')))
-for file_name, file_extension in dict_extension.items():
+for extension_type, extension_value in dict_extension.items():
     # output = file_finder(path, file_extension)
-    folder_name = file_name.split("_")[0].title() + " File"
+    folder_name = extension_type.split("_")[0].title() + " File"
     folder_path = os.path.join(path, folder_name)
     os.makedirs(folder_name, exist_ok=True)
-    for item in file_finder(path, file_extension):
-        item_path = os.path.join(path, file_extension)
+
+    for item in file_finder(path, extension_value):
+        item_path = os.path.join(folder_path, item)
         print(item_path)

@@ -8,8 +8,8 @@
 import os
 import shutil
 
-os.chdir(r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials')
-path = r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials'
+os.chdir(r'C:\Users\CCS\OneDrive\Desktop\Separate files')
+path = r'C:\Users\CCS\OneDrive\Desktop\Separate files'
 
 dict_extension = {
     'picture_extensions': ('.png', '.jpg', '.jpeg'),
@@ -29,7 +29,7 @@ def file_finder(folder_path, file_extension):
 
 for extension_type, extension_value in dict_extension.items():
     # print(file_finder(path, extension_value))
-    folder_name = extension_type.split("_")[0].title() + ' Files'
+    folder_name = extension_type.split("_")[0].title() + ' File'
     folder_path = os.path.join(path, folder_name)
     # os.mkdir(folder_path)
     os.makedirs(folder_path, exist_ok=True)
