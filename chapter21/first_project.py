@@ -8,8 +8,8 @@
 import os
 import shutil
 
-os.chdir(r'C:\Users\CCS\OneDrive\Desktop\Separate files')
-path = r'C:\Users\CCS\OneDrive\Desktop\Separate files'
+os.chdir(r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials')
+path = r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials'
 
 dict_extension = {
     'audio_extensions': ('.mp3', '.m4a', '.wav', '.flac'),
