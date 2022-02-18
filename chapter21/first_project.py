@@ -12,9 +12,10 @@ os.chdir(r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials')
 path = r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials'
 
 dict_extension = {
+    'picture_extensions': ('.png', '.jpg', '.jpeg'),
     'audio_extensions': ('.mp3', '.m4a', '.wav', '.flac'),
-    'document_extension': ('.docx', '.pdf', '.txt'),
-    'video_extensions': ('.mp4', '.mkv', '.MKV', '.flv', '.mpeg')
+    'document_extension': ('.docx', '.pdf', '.txt', '.log', '.LOG'),
+    'video_extensions': ('.mp4', '.mkv', '.MKV', '.flv', '.mpeg', '.webm')
 }
 
 
@@ -27,8 +28,12 @@ def file_finder(folder_path, file_extension):
 
 
 for extension_type, extension_value in dict_extension.items():
-    # print(f'Calling file_finder ...')
-    print(file_finder(path, extension_value))
-    # folder_name = extension_type.split("_")[0].title() + ' Files'
-    # folder_path = os.path.join(path, folder_name)
+    # print(file_finder(path, extension_value))
+    folder_name = extension_type.split("_")[0].title() + ' Files'
+    folder_path = os.path.join(path, folder_name)
     # os.mkdir(folder_path)
+    os.makedirs(folder_path, exist_ok=True)
+    for item in file_finder(path, extension_value):
+        item_path = os.path.join(path, item)
+        item_new_path = os.path.join(folder_path, item)
+        shutil.move(item_path, item_new_path)
