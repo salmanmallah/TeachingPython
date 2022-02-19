@@ -1,14 +1,15 @@
 import os
 import shutil
 
-os.chdir(r'C:\Users\CCS\OneDrive\Desktop\Separate files')
-path = r'C:\Users\CCS\OneDrive\Desktop\Separate files'
+os.chdir(r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials')
+path = r'C:\Users\CCS LAPTOP HYD\Desktop\python tutorials'
 
 dict_extension = {
     'picture_extensions': ('.png', '.jpg', '.jpeg'),
     'audio_extensions': ('.mp3', '.m4a', '.wav', '.flac'),
     'document_extension': ('.docx', '.pdf', '.txt', '.LOG'),
-    'video_extensions': ('.mp4', '.mkv', '.MKV', '.flv', '.mpeg', '.webm')
+    'video_extensions': ('.mp4', '.mkv', '.MKV', '.flv', '.mpeg', '.webm'),
+    'zip_extensions': ('.rar',)
 }
 
 
