@@ -28,12 +28,11 @@ def file_finder(folder_path, file_extension):
 
 
 for extension_type, extension_value in dict_extension.items():
-    # print(file_finder(path, extension_value))
     folder_name = extension_type.split("_")[0].title() + ' File'
     folder_path = os.path.join(path, folder_name)
-    # os.mkdir(folder_path)
-    os.makedirs(folder_path, exist_ok=True)
-    for item in file_finder(path, extension_value):
-        item_path = os.path.join(path, item)
-        item_new_path = os.path.join(folder_path, item)
-        shutil.move(item_path, item_new_path)
+    if file_finder(path, extension_value):
+        os.makedirs(folder_path, exist_ok=True)
+        for item in file_finder(path, extension_value):
+            item_path = os.path.join(path, item)
+            item_new_path = os.path.join(folder_path, item)
+            shutil.move(item_path, item_new_path)
