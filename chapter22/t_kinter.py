@@ -18,9 +18,20 @@ win.geometry('1200x680')
 name_label = ttk.Label(win, text='Enter your name : ')
 name_label.grid(row=0, column=0, sticky=tk.W)
 
-age_label = ttk.Label(win, text='Enter your age : ')
-age_label.grid(row=1, column=0, sticky=tk.W)
-
 email_label = ttk.Label(win, text='Enter your email : ')
-email_label.grid(row=2, column=0, sticky=tk.W)
+email_label.grid(row=1, column=0, sticky=tk.W)
+
+age_label = ttk.Label(win, text='Enter your age : ')
+age_label.grid(row=2, column=0, sticky=tk.W)
+
+# Create Entry Box
+name_entry = tk.Entry(win, width=20, bg='green', bd=4)
+name_entry.grid(row=0, column=1)
+
+email_entry = tk.Entry(win, width=20, bg='green', bd=4)
+email_entry.grid(row=1, column=1)
+
+age_entry = tk.Entry(win, width=20, bg='green', bd=4)
+age_entry.grid(row=2, column=1)
+
 win.mainloop()
