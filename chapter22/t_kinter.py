@@ -7,7 +7,13 @@
     ~kt-inter
     ~kinter
 """
-import tkinter
-win = tkinter.Tk()
+# starter code
+import tkinter as tk
+from tkinter import ttk
+win = tk.Tk()
+win.title("First Project")
+win.geometry('1200x680')
 
+# Create Labels
+ttk.Label(win, text='Enter your name : ')
 win.mainloop()
