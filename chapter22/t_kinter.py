@@ -7,3 +7,7 @@
     ~kt-inter
     ~kinter
 """
+import tkinter
+win = tkinter.Tk()
+
+win.mainloop()
