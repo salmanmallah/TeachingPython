@@ -17,8 +17,4 @@ win.geometry('1200x680')
 # Create Labels
 ttk.Label(win, text='Enter your name : ')
 
-import tkinter
-win = tkinter.Tk()
-
-
 win.mainloop()
