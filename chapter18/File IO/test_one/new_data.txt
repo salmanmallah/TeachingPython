@@ -1,0 +1,4 @@
+Qadeer's salary is 500
+Salman's salary is 10
+Noman's salary is 100
+Akram's salary is 800
