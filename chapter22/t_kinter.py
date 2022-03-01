@@ -46,7 +46,7 @@ age_entry = tk.Entry(win, width=20, bg='#ffd749', bd=4, textvariable=age_var)
 age_entry.grid(row=2, column=1)
 
 # Create combobox
-gender_var  = tk.StringVar()
+gender_var = tk.StringVar()
 gender_combobox = ttk.Combobox(win, width=18, textvariable=gender_var, state='readonly')
 gender_combobox['values'] = ('Male', 'Female', 'Other')
 gender_combobox.current(0)
@@ -65,4 +65,3 @@ gender_combobox.grid(row=3, column=1)
 # submit_button.grid(row=3, column=0)
 
 win.mainloop()
-
