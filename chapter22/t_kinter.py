@@ -16,7 +16,6 @@ win = tk.Tk()
 win.title("Gui Project")
 win.geometry('1200x680')
 
-
 # Create Labels
 name_label = ttk.Label(win, text='Enter your name : ')
 name_label.grid(row=0, column=0, sticky=tk.W)
@@ -36,7 +35,6 @@ name_entry = tk.Entry(win, width=20, bg='#ffd749', bd=4, textvariable=name_var)
 name_entry.grid(row=0, column=1)
 name_entry.focus()
 
-
 email_var = tk.StringVar()
 email_entry = tk.Entry(win, width=20, bg='#ffd749', bd=4, textvariable=email_var)
 email_entry.grid(row=1, column=1)
@@ -46,23 +44,52 @@ age_entry = tk.Entry(win, width=20, bg='#ffd749', bd=4, textvariable=age_var)
 age_entry.grid(row=2, column=1)
 
 # Create combobox
-gender_var  = tk.StringVar()
+gender_var = tk.StringVar()
 gender_combobox = ttk.Combobox(win, width=18, textvariable=gender_var, state='readonly')
 gender_combobox['values'] = ('Male', 'Female', 'Other')
 gender_combobox.current(0)
 gender_combobox.grid(row=3, column=1)
-# Create a Button
-# def action():
-#     name = name_var.get()
-#     email = email_var.get()
-#     age = age_var.get()
-#     print(name)
-#     print(email)
-#     print(age)
-#
 
-# submit_button = ttk.Button(win, text='Submit', command=action)
-# submit_button.grid(row=3, column=0)
+# Create Radio Button
+# Student | Teacher
+usertype = tk.StringVar()
+radio_button1 = ttk.Radiobutton(win, text='Student', value='Student', variable=usertype)
+radio_button1.grid(row=4, column=0)
+
+radio_button2 = ttk.Radiobutton(win, text='Teacher', value='Teacher', variable=usertype)
+radio_button2.grid(row=4, column=1)
+
+# Create Check Button
+check_button_value = tk.IntVar()
+check_button = ttk.Checkbutton(win, text="Agree & Continue Please read all!", variable=check_button_value)
+check_button.grid(row=5, columnspan=3)
+
+
+# Create Submit Button
+
+def action():
+    name = name_var.get()
+    email = email_var.get()
+    age = age_var.get()
+    gender = gender_var.get()
+    user_type = usertype.get()
+    if check_button_value.get() == 0:
+        agreed = "NO"
+    else:
+        agreed = 'Yes'
+    with open('user_details.txt', 'a', newline="") as wf:
+        wf.write(f"{name},{email},{age},{gender},{user_type},{agreed}\n")
+
+    name_entry.delete(0, tk.END)
+    email_entry.delete(0, tk.END)
+    age_entry.delete(0, tk.END)
+
+
+submit_button = ttk.Button(win, text='Submit', command=action)
+submit_button.grid(row=6, column=0)
+
+name_label.configure(background='#0be044')
+email_label.configure(background='#0be044')
+age_label.configure(background='#0be044')
 
 win.mainloop()
-
