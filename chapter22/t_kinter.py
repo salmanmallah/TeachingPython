@@ -11,10 +11,12 @@
 # starter code
 import tkinter as tk
 from tkinter import ttk
+from csv import DictWriter
+import os
 
 win = tk.Tk()
 win.title("Gui Project")
-win.geometry('1200x680')
+win.geometry('800x350')
 
 # Create Labels
 name_label = ttk.Label(win, text='Enter your name : ')
@@ -47,19 +49,20 @@ age_entry.grid(row=2, column=1)
 gender_var = tk.StringVar()
 gender_combobox = ttk.Combobox(win, width=18, textvariable=gender_var, state='readonly')
 gender_combobox['values'] = ('Male', 'Female', 'Other')
-gender_combobox.current(0)
 gender_combobox.grid(row=3, column=1)
+gender_combobox.current(0)
 
-<<<<<<< HEAD
-=======
+
 # Create Radio Button
 # Student | Teacher
 usertype = tk.StringVar()
 radio_button1 = ttk.Radiobutton(win, text='Student', value='Student', variable=usertype)
 radio_button1.grid(row=4, column=0)
 
+
 radio_button2 = ttk.Radiobutton(win, text='Teacher', value='Teacher', variable=usertype)
 radio_button2.grid(row=4, column=1)
+
 
 # Create Check Button
 check_button_value = tk.IntVar()
@@ -68,6 +71,30 @@ check_button.grid(row=5, columnspan=3)
 
 
 # Create Submit Button
+#
+# def action():
+#     name = name_var.get()
+#     email = email_var.get()
+#     age = age_var.get()
+#     gender = gender_var.get()
+#     user_type = usertype.get()
+#     if check_button_value.get() == 0:
+#         agreed = "NO"
+#     else:
+#         agreed = 'Yes'
+#     with open('user_details.txt', 'a', newline="") as wf:
+#         wf.write(f"{name},{email},{age},{gender},{user_type},{agreed}\n")
+#
+#     # delete EntryBox data after submit
+#     name_entry.delete(0, tk.END)
+#     email_entry.delete(0, tk.END)
+#     age_entry.delete(0, tk.END)
+#
+#     # after submit change label bg
+#     name_label.configure(background='#0be044')
+#     email_label.configure(background='#0be044')
+#     age_label.configure(background='#0be044')
+
 
 def action():
     name = name_var.get()
@@ -79,9 +106,22 @@ def action():
         agreed = "NO"
     else:
         agreed = 'Yes'
-    with open('user_details.txt', 'a', newline="") as wf:
-        wf.write(f"{name},{email},{age},{gender},{user_type},{agreed}\n")
 
+    # write to csv file
+    with open('userdata.csv', 'a', newline="") as wf:
+        dict_writer = DictWriter(wf, fieldnames=['UserName', 'UserEmail', 'UserAge', 'UserGender', 'UserType', 'UserAgreed'])
+        if os.stat('userdata.csv').st_size == 0:
+            dict_writer.writeheader()
+        dict_writer.writerow({
+            'UserName': name,
+            'UserEmail': email,
+            'UserAge': age,
+            'UserGender': gender,
+            'UserType': user_type,
+            'UserAgreed': agreed,
+        })
+
+    # delete EntryBox data after submit
     name_entry.delete(0, tk.END)
     email_entry.delete(0, tk.END)
     age_entry.delete(0, tk.END)
@@ -90,9 +130,4 @@ def action():
 submit_button = ttk.Button(win, text='Submit', command=action)
 submit_button.grid(row=6, column=0)
 
-name_label.configure(background='#0be044')
-email_label.configure(background='#0be044')
-age_label.configure(background='#0be044')
-
->>>>>>> 9d811fa86a809f4b4031cf25bd360e6a0f0bffa1
 win.mainloop()
