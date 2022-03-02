@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from csv import DictWriter
+import os
 
 win = tk.Tk()
 win.title('My Code')
@@ -53,7 +54,7 @@ radio_button2.grid(row=4, column=1)
 
 
 # Create CheckBox
-checkbox_var = tk.StringVar()
+checkbox_var = tk.IntVar()
 check_button = ttk.Checkbutton(win, text='Agree Terms and Conditions', variable=checkbox_var)
 check_button.grid(row=5, columnspan=3)
 
@@ -66,12 +67,25 @@ def action():
     age = age_var.get()
     gender = gender_var.get()
     usertype = usertype_var.get()
-    useragree = checkbox_var.get()
-    print(name, email, age, gender, usertype, useragree)
+    if checkbox_var.get() != 0:
+        user_agree = 'YES'
+    else:
+        user_agree = 'NO'
+    print(name, email, age, gender, usertype, user_agree)
 
     with open('salman.csv', 'a', newline="") as wf:
-        csv_writer = DictWriter(wf, fieldnames=['User Name', 'User Email', 'User Age', 'User Gender', 'User Type', 'Terms & Conditions'])
-        csv_writer.writeheader()
+        csv_writer = DictWriter(wf, fieldnames=['UserName', 'UserEmail', 'UserAge', 'UserGender', 'UserType', 'AcceptTerm'])
+        if os.stat('salman.csv').st_size == 0:
+            csv_writer.writeheader()
+        csv_writer.writerow({
+          'UserName': name,
+          'UserEmail': email,
+          'UserAge': age,
+          'UserGender': gender,
+          'UserType': usertype,
+          'AcceptTerm': user_agree,
+        })
+    win.destroy()
 
 
 submit_button = tk.Button(win, text='Submit', width=40, activebackground='#2596be', height=2, command=action)
