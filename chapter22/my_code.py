@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from csv import DictWriter
 
 win = tk.Tk()
 win.title('My Code')
@@ -67,6 +68,10 @@ def action():
     usertype = usertype_var.get()
     useragree = checkbox_var.get()
     print(name, email, age, gender, usertype, useragree)
+
+    with open('salman.csv', 'a', newline="") as wf:
+        csv_writer = DictWriter(wf, fieldnames=['User Name', 'User Email', 'User Age', 'User Gender', 'User Type', 'Terms & Conditions'])
+        csv_writer.writeheader()
 
 
 submit_button = tk.Button(win, text='Submit', width=40, activebackground='#2596be', height=2, command=action)
