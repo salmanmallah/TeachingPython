@@ -8,32 +8,23 @@ win.title('My Code')
 win.geometry('600x300')
 
 # create labels
-name_label = ttk.Label(win, text='Enter your Name:')
-name_label.grid(row=0, column=0)
-
-email_label = ttk.Label(win, text='Enter your Email:')
-email_label.grid(row=1, column=0)
-
-age_label = ttk.Label(win, text='Enter you Age:')
-age_label.grid(row=2, column=0, sticky=tk.W)
-
-gender_label = ttk.Label(win, text='Enter you Age:')
-gender_label.grid(row=3, column=0, sticky=tk.W)
+labels = ['Enter your Name : ', 'Enter your Email : ', 'Enter you Age : ', 'Enter you Gender : ']
+for i in range(len(labels)):
+    name_label = ttk.Label(win, text=labels[i])
+    name_label.grid(row=i, column=0, sticky=tk.W)
 
 
 # Create EntryBox
-name_var = tk.StringVar()
-name_entry = ttk.Entry(win, textvariable=name_var)
-name_entry.grid(row=0, column=1)
-name_entry.focus()
-
-email_var = tk.StringVar()
-email_entry = ttk.Entry(win, textvariable=email_var)
-email_entry.grid(row=1, column=1)
-
-age_var = tk.StringVar()
-age_entry = ttk.Entry(win, textvariable=age_var)
-age_entry.grid(row=2, column=1)
+entryBox_var = {
+    'name': tk.StringVar(),
+    'email': tk.StringVar(),
+    'age': tk.StringVar()
+}
+counter = 0
+for i in entryBox_var:
+    cur_entrybox = ttk.Entry(win, textvariable=entryBox_var[i])
+    cur_entrybox.grid(row=counter, column=1)
+    counter += 1
 
 
 # Create ComboBox
@@ -62,9 +53,9 @@ check_button.grid(row=5, columnspan=3)
 
 
 def action():
-    name = name_var.get()
-    email = email_var.get()
-    age = age_var.get()
+    name = entryBox_var['name'].get()
+    email = entryBox_var['email'].get()
+    age = entryBox_var['age'].get()
     gender = gender_var.get()
     usertype = usertype_var.get()
     if checkbox_var.get() != 0:
@@ -74,7 +65,8 @@ def action():
     print(name, email, age, gender, usertype, user_agree)
 
     with open('salman.csv', 'a', newline="") as wf:
-        csv_writer = DictWriter(wf, fieldnames=['UserName', 'UserEmail', 'UserAge', 'UserGender', 'UserType', 'AcceptTerm'])
+        csv_writer = DictWriter(wf, fieldnames=['UserName', 'UserEmail', 'UserAge', 'UserGender', 'UserType',
+                                                'AcceptTerm'])
         if os.stat('salman.csv').st_size == 0:
             csv_writer.writeheader()
         csv_writer.writerow({
