@@ -22,8 +22,7 @@ userinfo = {
 counter = 0
 for i in userinfo:
     cur_entrybox = i + '_entry'
-    cur_entrybox = ttk.Entry(win, textvariable=userinfo[i])
-    cur_entrybox.grid(row=counter, column=1)
+    ttk.Entry(win, textvariable=userinfo[i]).grid(row=counter, column=1)
     counter += 1
 
 
