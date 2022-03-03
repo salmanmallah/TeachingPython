@@ -3,7 +3,7 @@ from tkinter import ttk
 
 win = tk.Tk()
 win.title("widgets With For loops")
-win.geometry('400x200')
+win.geometry('1200x800')
 
 # Create Labels
 
@@ -12,7 +12,7 @@ labels = ['Enter your Name: ', 'Enter your Email: ', 'Enter your Age: ', 'Your C
 for label in range(len(labels)):
     current_label = 'label' + str(label)
     current_label = ttk.Label(win, text=labels[label])
-    current_label.grid(row=label, column=0, sticky=tk.W)
+    current_label.grid(row=label, column=0, sticky=tk.W, padx=50, pady=5)
 
 # Create EntryBox
 userinfo = {
@@ -40,9 +40,10 @@ def action():
     print(userinfo['province'].get())
     print(userinfo['city'].get())
     print(userinfo['number'].get())
+    win.destroy()
 
 
-ttk.Button(win, text='Click Me', command=action).grid(row=7)
+ttk.Button(win, text='Click Me', command=action).grid(row=7, sticky=tk.W,  padx=50, pady=5)
 
 
 win.mainloop()
