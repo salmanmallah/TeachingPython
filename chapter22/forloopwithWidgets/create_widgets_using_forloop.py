@@ -5,13 +5,18 @@ win = tk.Tk()
 win.title("widgets With For loops")
 win.geometry('1200x800')
 
-# Create Labels
+
+# Create Labels Frames
+frame = ttk.LabelFrame(win, text='Enter your details below')
+frame.grid(row=0, column=0)
+style = ttk.Style()
+style.configure('TLabelframe', background='Black')
 
 labels = ['Enter your Name: ', 'Enter your Email: ', 'Enter your Age: ', 'Your Country : ', 'Your Province : ',
           'Your City', 'Your Number : ']
 for label in range(len(labels)):
     current_label = 'label' + str(label)
-    current_label = ttk.Label(win, text=labels[label])
+    current_label = ttk.Label(frame, text=labels[label])
     current_label.grid(row=label, column=0, sticky=tk.W, padx=50, pady=5)
 
 # Create EntryBox
@@ -27,7 +32,7 @@ userinfo = {
 counter = 0
 for i in userinfo:
     # cur_entrybox = i + '_entry'
-    ttk.Entry(win, textvariable=userinfo[i]).grid(row=counter, column=1)
+    ttk.Entry(frame, textvariable=userinfo[i]).grid(row=counter, column=1)
     counter += 1
 
 
@@ -44,4 +49,5 @@ def action():
 
 
 ttk.Button(win, text='Click Me', command=action).grid(row=7, sticky=tk.W,  padx=50, pady=5)
+
 win.mainloop()
