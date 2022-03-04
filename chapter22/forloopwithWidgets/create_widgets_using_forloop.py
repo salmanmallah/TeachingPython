@@ -44,6 +44,4 @@ def action():
 
 
 ttk.Button(win, text='Click Me', command=action).grid(row=7, sticky=tk.W,  padx=50, pady=5)
-
-
 win.mainloop()
