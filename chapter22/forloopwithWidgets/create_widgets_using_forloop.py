@@ -8,16 +8,16 @@ win.geometry('1200x800')
 
 # Create Labels Frames
 frame = ttk.LabelFrame(win, text='Enter your details below')
-frame.grid(row=0, column=0)
-style = ttk.Style()
-style.configure('TLabelframe', background='Black')
+frame.grid(row=0, column=0, padx=40)
+# style = ttk.Style()
+# style.configure('TLabelframe', background='Black')
 
 labels = ['Enter your Name: ', 'Enter your Email: ', 'Enter your Age: ', 'Your Country : ', 'Your Province : ',
           'Your City', 'Your Number : ']
 for label in range(len(labels)):
     current_label = 'label' + str(label)
     current_label = ttk.Label(frame, text=labels[label])
-    current_label.grid(row=label, column=0, sticky=tk.W, padx=50, pady=5)
+    current_label.grid(row=label, column=0, sticky=tk.W)
 
 # Create EntryBox
 userinfo = {
@@ -48,6 +48,9 @@ def action():
     win.destroy()
 
 
-ttk.Button(win, text='Click Me', command=action).grid(row=7, sticky=tk.W,  padx=50, pady=5)
+for child in frame.winfo_children():
+    child.grid_configure(padx=5, pady=5)
+
+ttk.Button(win, text='Click Me', command=action, width=50).grid(row=1, sticky=tk.W)
 
 win.mainloop()
