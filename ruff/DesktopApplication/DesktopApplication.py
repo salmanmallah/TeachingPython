@@ -9,8 +9,18 @@ win = tk.Tk()
 win.title('Desktop Application')
 win.geometry('800x600')
 
+nb = ttk.Notebook(win)
+page1 = ttk.Frame(nb)
+page2 = ttk.Frame(nb)
+
+nb.add(page1, text="Entry Form")
+nb.add(page2, text="Login Form")
+nb.pack(expand=True, fill='both', pady=20, padx=20)
 # frame
-frame = ttk.LabelFrame(win, text='Admission Form')
+
+
+frame = ttk.LabelFrame(page1, text='Admission Form')
+
 
 # labels
 label_name = ttk.Label(frame, text='Name: ')
@@ -39,14 +49,19 @@ var_qualification = tk.StringVar()
 # EnterBoxes
 entry_name = ttk.Entry(frame, textvariable=var_name)
 entry_fathername = ttk.Entry(frame, textvariable=var_fathername)
-entery_birthdate = ttk.Entry(frame, textvariable=var_birthdate)
-entery_cnic = ttk.Entry(frame, textvariable=var_cnic)
-entery_gender = ttk.Entry(frame, textvariable=var_gender)
-entery_religion = ttk.Entry(frame, textvariable=var_religion)
-entery_domicile = ttk.Entry(frame, textvariable=var_domicile)
-entery_mobnumber = ttk.Entry(frame, textvariable=var_mobnumber)
-entery_email = ttk.Entry(frame, textvariable=var_email)
-entery_qualification = ttk.Entry(frame, textvariable=var_qualification)
+entry_birthdate = ttk.Entry(frame, textvariable=var_birthdate)
+entry_cnic = ttk.Entry(frame, textvariable=var_cnic)
+
+# gender combobox
+entry_gender = ttk.Combobox(frame, textvariable=var_gender, state='readonly', width=18)
+entry_gender['values'] = ('Male', 'Female', 'Other')
+entry_gender.current(0)
+
+entry_religion = ttk.Entry(frame, textvariable=var_religion)
+entry_domicile = ttk.Entry(frame, textvariable=var_domicile)
+entry_mobnumber = ttk.Entry(frame, textvariable=var_mobnumber)
+entry_email = ttk.Entry(frame, textvariable=var_email)
+entry_qualification = ttk.Entry(frame, textvariable=var_qualification)
 
 # Submit Button
 # submitbutton function
@@ -83,6 +98,8 @@ def submit_action():
             'Qaulification': qualification,
 
         })
+        box.showinfo('Data Submitted', 'Your data is submitted Successfully')
+        win.destroy()
 
 
 submit_btn = ttk.Button(frame, text='SUBMIT', command=submit_action)
@@ -92,29 +109,30 @@ submit_btn = ttk.Button(frame, text='SUBMIT', command=submit_action)
 frame.pack(pady=50, padx=50)
 
 # label grid
-label_name.grid()
-label_fathername.grid()
-label_birthdate.grid()
-label_cnic.grid()
-label_gender.grid()
-label_religion.grid()
-label_domicile.grid()
-label_mobnumber.grid()
-label_email.grid()
-label_qualification.grid()
+label_name.grid(sticky=tk.W)
+label_fathername.grid(sticky=tk.W)
+label_birthdate.grid(sticky=tk.W)
+label_cnic.grid(sticky=tk.W)
+label_gender.grid(sticky=tk.W)
+label_religion.grid(sticky=tk.W)
+label_domicile.grid(sticky=tk.W)
+label_mobnumber.grid(sticky=tk.W)
+label_email.grid(sticky=tk.W)
+label_qualification.grid(sticky=tk.W)
 
 
 # entrybox grid
 entry_name.grid(row=0, column=1, pady=5)
+entry_name.focus()
 entry_fathername.grid(row=1, column=1, pady=5)
-entery_birthdate.grid(row=2, column=1, pady=5)
-entery_cnic.grid(row=3, column=1, pady=5)
-entery_gender.grid(row=4, column=1, pady=5)
-entery_religion.grid(row=5, column=1, pady=5)
-entery_domicile.grid(row=6, column=1, pady=5)
-entery_mobnumber.grid(row=7, column=1, pady=5)
-entery_email.grid(row=8, column=1, pady=5)
-entery_qualification.grid(row=9, column=1, pady=5)
+entry_birthdate.grid(row=2, column=1, pady=5)
+entry_cnic.grid(row=3, column=1, pady=5)
+entry_gender.grid(row=4, column=1, pady=5)
+entry_religion.grid(row=5, column=1, pady=5)
+entry_domicile.grid(row=6, column=1, pady=5)
+entry_mobnumber.grid(row=7, column=1, pady=5)
+entry_email.grid(row=8, column=1, pady=5)
+entry_qualification.grid(row=9, column=1, pady=5)
 
 
 # submit button grid
