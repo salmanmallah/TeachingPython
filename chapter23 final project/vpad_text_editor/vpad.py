@@ -3,12 +3,10 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 
-
 # starter code
 main_application = tk.Tk()
-main_application.geometry('1200x800')
+main_application.geometry('1200x700')
 main_application.title('Vpad Text Editor')
-
 
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
@@ -33,7 +31,6 @@ clear_all_icon = tk.PhotoImage(file='icons2/clear_all.png')
 find_icon = tk.PhotoImage(file='icons2/find.png')
 
 edit = tk.Menu(main_menu, tearoff=False)
-
 
 # -------- End Edit ----------
 
@@ -75,7 +72,6 @@ main_menu.add_cascade(label='Edit', menu=edit)
 main_menu.add_cascade(label='View', menu=view)
 main_menu.add_cascade(label='ColorTheme', menu=color_theme)
 
-
 # ------------&&&&&&&&&&&&&  End main menu  &&&&&&&&&&&&--------------
 #
 # #########################  Toolbar  ##############################
@@ -98,7 +94,6 @@ font_size = ttk.Combobox(tool_bar, textvariable=size_var, width=14, state='reado
 font_size['values'] = tuple(range(8, 81, 2))
 font_size.grid(row=0, column=1, padx=5)
 font_size.current(4)
-
 
 # Bold Button
 bold_icon = tk.PhotoImage(file='icons2/bold.png')
@@ -138,9 +133,86 @@ right_align_btn.grid(row=0, column=8, padx=5)
 # ------------&&&&&&&&&&&&&  End Toolbar  &&&&&&&&&&&&--------------
 
 # #########################  Text Editor  ##############################
+
+text_editor = tk.Text(main_application)
+text_editor.config(wrap='word', relief=tk.FLAT)
+
+scroll_bar = tk.Scrollbar(main_application)
+text_editor.focus_set()
+scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
+text_editor.pack(fill=tk.BOTH, expand=True)
+# scrollBar
+scroll_bar.config(command=text_editor.yview)
+text_editor.config(yscrollcommand=scroll_bar.set)
+
+# font family and font size functionality
+current_font_family = 'Arial'
+current_font_size = 12
+
+
+def change_font(event=None):
+    global current_font_family
+    current_font_family = font_family.get()
+    text_editor.configure(font=(current_font_family, current_font_size))
+
+
+def change_fontsize(event=None):
+    global current_font_size
+    current_font_size = size_var.get()
+    text_editor.configure(font=(current_font_family, current_font_size))
+
+
+font_box.bind('<<ComboboxSelected>>', change_font)
+font_size.bind('<<ComboboxSelected>>', change_fontsize)
+
+text_editor.config(font=('Arial', 12))
+
+
+# ########### BUTTON FUNCTIONALITY
+
+# Bold button functionality
+def change_bold():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['weight'] == 'normal':
+        text_editor.configure(font=(current_font_family, current_font_size, 'bold'))
+    if text_property.actual()['weight'] == 'bold':
+        text_editor.configure(font=(current_font_family, current_font_size, 'normal'))
+
+
+bold_btn.configure(command=change_bold)
+
+
+# italic button functionality
+def change_italic():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['slant'] == 'roman':
+        text_editor.configure(font=(current_font_family, current_font_size, 'italic'))
+    if text_property.actual()['slant'] == 'italic':
+        text_editor.configure(font=(current_font_family, current_font_size, 'normal'))
+
+
+italic_btn.configure(command=change_italic)
+
+
+# underline button functionality
+def change_underline():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['underline'] == 0:
+        text_editor.configure(font=(current_font_family, current_font_size, 'underline'))
+    elif text_property.actual()['underline'] == 1:
+        text_editor.configure(font=(current_font_family, current_font_size, 'normal'))
+
+
+underline_btn.configure(command=change_underline)
+
+
 # ------------&&&&&&&&&&&&&  End Text Editor  &&&&&&&&&&&&--------------
 
-# #########################  Main Status Bar  ##############################
+# #########################  Status Bar  ##############################
+
+status_bar = ttk.Label(main_application, text='Status Bar')
+status_bar.pack(side=tk.BOTTOM)
+
 # ------------&&&&&&&&&&&&&  End Status Bar  &&&&&&&&&&&&--------------
 
 # #########################  Main Menu Functionality  ##############################
