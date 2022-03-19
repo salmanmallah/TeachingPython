@@ -6,7 +6,7 @@ from tkinter import font, colorchooser, filedialog, messagebox
 # starter code
 main_application = tk.Tk()
 main_application.geometry('1200x700')
-main_application.title('Vpad Text Editor')
+main_application.title('V pad Text Editor')
 
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
@@ -165,8 +165,6 @@ def change_fontsize(event=None):
 font_box.bind('<<ComboboxSelected>>', change_font)
 font_size.bind('<<ComboboxSelected>>', change_fontsize)
 
-text_editor.config(font=('Arial', 12))
-
 
 # ########### BUTTON FUNCTIONALITY
 
@@ -206,14 +204,60 @@ def change_underline():
 underline_btn.configure(command=change_underline)
 
 
+# font color functionality
+def change_font_color():
+    color_var = tk.colorchooser.askcolor()
+    text_editor.configure(fg=color_var[1])
+
+
+font_color_btn.configure(command=change_font_color)
+
+
+# text Align functionality
+def align_left():
+    text_content = text_editor.get(1.0, 'end')
+    text_editor.tag_config('left', justify=tk.LEFT)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, text_content, 'left')
+
+
+left_align_btn.configure(command=align_left)
+
+
+# ALIGN CENTER
+def align_center():
+    text_content = text_editor.get(1.0, 'end')
+    text_editor.tag_config('center', justify=tk.CENTER)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, text_content, 'center')
+
+
+center_align_btn.configure(command=align_center)
+
+
+# ALIGN RIGHT
+def align_right():
+    text_content = text_editor.get(1.0, 'end')
+    text_editor.tag_config('right', justify=tk.RIGHT)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, text_content, 'right')
+
+
+right_align_btn.configure(command=align_right)
+
+text_editor.config(font=('Arial', 12))
 # ------------&&&&&&&&&&&&&  End Text Editor  &&&&&&&&&&&&--------------
 
+
 # #########################  Status Bar  ##############################
+
 
 status_bar = ttk.Label(main_application, text='Status Bar')
 status_bar.pack(side=tk.BOTTOM)
 
+
 # ------------&&&&&&&&&&&&&  End Status Bar  &&&&&&&&&&&&--------------
+
 
 # #########################  Main Menu Functionality  ##############################
 
