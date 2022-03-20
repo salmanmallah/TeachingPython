@@ -255,6 +255,20 @@ text_editor.config(font=('Arial', 12))
 status_bar = ttk.Label(main_application, text='Status Bar')
 status_bar.pack(side=tk.BOTTOM)
 
+text_changed = False
+
+
+def changed(event=None):
+    global text_changed
+    if text_editor.edit_modified():
+        text_changed = True
+        words = len(text_editor.get(1.0, 'end-1c').split())
+        characters = len(text_editor.get(1.0, 'end-1c'))
+        status_bar.config(text=f'Characters: {characters} Words: {words}')
+        text_editor.edit_modified(False)
+
+
+text_editor.bind('<<Modified>>', changed)
 
 # ------------&&&&&&&&&&&&&  End Status Bar  &&&&&&&&&&&&--------------
 
@@ -263,6 +277,10 @@ status_bar.pack(side=tk.BOTTOM)
 
 # File commands
 file.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N')
+
+
+
+
 file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O')
 file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S')
 file.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
