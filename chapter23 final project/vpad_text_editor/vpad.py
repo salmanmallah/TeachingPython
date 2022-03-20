@@ -6,7 +6,7 @@ from tkinter import font, colorchooser, filedialog, messagebox
 # starter code
 main_application = tk.Tk()
 main_application.geometry('1200x700')
-main_application.title('V pad Text Editor')
+main_application.title('Vpad Text Editor')
 
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
@@ -275,14 +275,39 @@ text_editor.bind('<<Modified>>', changed)
 
 # #########################  Main Menu Functionality  ##############################
 
+# new file functionality
+url = ''
+
+
+def new_file(event=None):
+    global url
+    url = ''
+    text_editor.delete(1.0, tk.END)
+
+
 # File commands
-file.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N')
+file.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
 
 
+# open file Functionality
+
+def open_file(event=None):
+    global url
+    url = filedialog.askopenfile(initialdir=os.getcwd(), title='Select File',
+                                 filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+    try:
+        with open(str(url), 'r') as fr:
+            text_editor.delete(1.0, tk.END)
+            text_editor.insert(1.0, fr.read())
+    except FileNotFoundError:
+        return
+    except:
+        return
+    main_application.title(os.path.basename(url))
 
 
-file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O')
-file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S')
+file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
+file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', )
 file.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Alt+F4')
 
