@@ -289,29 +289,48 @@ def new_file(event=None):
 # File commands
 file.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
 
-print(url)
+
 # open file Functionality
 
-# def open_file(event=None):
-#     global url
-#     print(url)
-#     url = filedialog.askopenfile(initialdir=os.getcwd(), title='Select File', filetypes=(('All Files', '*.*'), ('Text File', '*.txt')))
-#     print(type(url))
-#     print(url.read())
-#     try:
-#         with open(url, 'r') as fr:
-#             text_editor.delete(1.0, tk.END)
-#             text_editor.insert(1.0, fr.read())
-#     except FileNotFoundError:
-#         print('file not found')
-#     except:
-#         print('User not select anything')
-#     main_application.title(os.path.basename(url))
+def open_file(event=None):
+    global url
+    url = filedialog.askopenfile(initialdir=os.getcwd(), title='Select File',
+                                 filetypes=(('All Files', '*.*'), ('Text File', '*.txt')))
+    try:
+        url = url.name
+        with open(url, 'r') as fr:
+            text_editor.delete(1.0, tk.END)
+            text_editor.insert(1.0, fr.read())
+    except FileNotFoundError:
+        print('file not found')
+    except 'FileNotSelectedError':
+        print('User not select anything')
+
+    main_application.title(os.path.basename(url))
 
 
-file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O',)
+file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
 
-file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', )
+
+# save file functionality
+def save_file(event=None):
+    global url
+    try:
+        if url:
+            content = str(text_editor.get(1.0, tk.END))
+            with open(url, 'w', encoding='utf-8') as fw:
+                fw.write(content)
+        else:
+            url = filedialog.asksaveasfile(mode='w', defaultextension='.txt',
+                                           filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+            content2 = text_editor.get(1.0, tk.END)
+            url.write(content2)
+            url.close()
+    except:
+        return
+
+
+file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
 file.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Alt+F4')
 
@@ -336,3 +355,4 @@ for i in color_dict:
 
 main_application.config(menu=main_menu)
 main_application.mainloop()
+
