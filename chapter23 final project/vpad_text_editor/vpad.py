@@ -331,7 +331,46 @@ def save_file(event=None):
 
 
 file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
-file.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
+
+# save as functionality
+def save_as(event=None):
+    global url
+    try:
+        content = text_editor.get(1.0, tk.END)
+        url = filedialog.asksaveasfile(mode='w', defaultextension='.txt',
+                                       filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+        url.write(content)
+        url.close()
+    except:
+        return
+
+
+file.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=save_as)
+
+
+# exit functionality
+def exit_func(event=None):
+    global url, text_changed
+    try:
+        if text_changed:
+            mbox = messagebox.askyesnocancel('warning', 'Do you want to save the file?')
+            if mbox is True:
+                if url:
+                    content = text_editor.get(1.0, tk.END)
+                    with open(url, 'w', encoding='utf-8') as fw:
+                        fw.write(content)
+                        main_application.destroy()
+                else:
+                    content2 = str(text_editor.get(1.0, tk.END))
+                    url = filedialog.asksaveasfile(mode='w', defaultextension='.txt',
+                                                   filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+                    url.write(content2)
+                    url.close()
+                    main_application.destroy()
+
+
+
+
 file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Alt+F4')
 
 # Edit Commands
