@@ -355,4 +355,3 @@ for i in color_dict:
 
 main_application.config(menu=main_menu)
 main_application.mainloop()
-
