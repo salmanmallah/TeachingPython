@@ -6,7 +6,7 @@ from tkinter import font, colorchooser, filedialog, messagebox
 # starter code
 main_application = tk.Tk()
 main_application.geometry('1200x700')
-main_application.title('Vpad Text Editor')
+main_application.title('SM Code Editor')
 
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
@@ -304,7 +304,7 @@ def open_file(event=None):
     except FileNotFoundError:
         print('file not found')
     except 'FileNotSelectedError':
-        print('User not select anything')
+        return 'User not select anything'
 
     main_application.title(os.path.basename(url))
 
@@ -367,17 +367,27 @@ def exit_func(event=None):
                     url.write(content2)
                     url.close()
                     main_application.destroy()
+            elif mbox is False:
+                main_application.destroy()
+        else:
+            main_application.destroy()
+    except:
+        return
 
 
-
-
-file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Alt+F4')
+file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Alt+F4', command=exit_func)
 
 # Edit Commands
-edit.add_command(label='Copy', accelerator='Ctrl+C', image=copy_icon, compound=tk.LEFT)
-edit.add_command(label='Past', accelerator='Ctrl+V', image=paste_icon, compound=tk.LEFT)
-edit.add_command(label='Cut', accelerator='Ctrl+X', image=cut_icon, compound=tk.LEFT)
-edit.add_command(label='Clear All', accelerator='Ctrl+Alt+X', image=clear_all_icon, compound=tk.LEFT)
+edit.add_command(label='Copy', accelerator='Ctrl+C', image=copy_icon, compound=tk.LEFT, command=lambda: text_editor.event_generate('<Control c>'))
+edit.add_command(label='Past', accelerator='Ctrl+V', image=paste_icon, compound=tk.LEFT, command=lambda: text_editor.event_generate('<Control v>'))
+edit.add_command(label='Cut', accelerator='Ctrl+X', image=cut_icon, compound=tk.LEFT, command=lambda: text_editor.event_generate('<Control x>'))
+edit.add_command(label='Clear All', accelerator='Ctrl+Alt+X', image=clear_all_icon, compound=tk.LEFT, command=lambda: text_editor.delete(1.0, tk.END))
+
+
+# ########### Find Functionality
+
+
+
 edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT)
 
 # View Check Button
