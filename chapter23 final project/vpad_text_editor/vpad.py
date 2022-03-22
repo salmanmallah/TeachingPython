@@ -332,6 +332,7 @@ def save_file(event=None):
 
 file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
 
+
 # save as functionality
 def save_as(event=None):
     global url
@@ -387,13 +388,32 @@ edit.add_command(label='Clear All', accelerator='Ctrl+Alt+X', image=clear_all_ic
 # ########### Find Functionality
 
 def find_func(event=None):
+    def find():
+        word = find_input.get()
+        text_editor.tag_remove('match', '1.0', tk.END)
+        matches = 0
+        if word:
+            start_pos = '1.0'
+            while True:
+                start_pos = text_editor.search(word, start_pos, stopindex=tk.END)
+                if not start_pos:
+                    break
+                end_pos = f'{start_pos}+{len(word)}c'
+                text_editor.tag_add('match', start_pos, end_pos)
+                matches += 1
+                start_pos = end_pos
+                text_editor.tag_config('match', foreground='red', background='yellow')
+
+    def replace():
+        pass
+
     find_dialogue = tk.Toplevel()
     find_dialogue.geometry("450x250+500+200")
     find_dialogue.title('Find')
     find_dialogue.resizable(0, 0)
 
     # Frame
-    find_frame = ttk.LabelFrame(find_dialogue,text='Find / Replace')
+    find_frame = ttk.LabelFrame(find_dialogue, text='Find / Replace')
     find_frame.pack(pady=20)
 
     # Labels
@@ -405,8 +425,8 @@ def find_func(event=None):
     replace_input = ttk.Entry(find_frame, width=30)
 
     # Button
-    find_button = ttk.Button(find_frame, text='Find', command=None)
-    replace_button = ttk.Button(find_frame, text='Replace', command=None)
+    find_button = ttk.Button(find_frame, text='Find', command=find)
+    replace_button = ttk.Button(find_frame, text='Replace', command=replace)
 
     # Label Grid
     text_find_label.grid(row=0, column=0, padx=4, pady=4)
