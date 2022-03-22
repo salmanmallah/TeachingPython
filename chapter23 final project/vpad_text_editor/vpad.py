@@ -450,7 +450,6 @@ def find_func(event=None):
 
 edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT, command=find_func)
 
-
 # ########   View Check Button
 
 show_toolbar = tk.BooleanVar()
@@ -461,6 +460,27 @@ show_statusbar.set(True)
 
 def hide_toolbar():
     global show_toolbar
+    if show_toolbar:
+        tool_bar.pack_forget()
+        show_toolbar = False
+    else:
+
+        text_editor.pack_forget()
+        status_bar.pack_forget()
+        tool_bar.pack(side=tk.TOP, fill=tk.X)
+        text_editor.pack(fill=tk.BOTH, expand=True)
+        status_bar.pack(side=tk.BOTTOM)
+        show_toolbar = True
+
+
+def hide_statusbar():
+    global show_statusbar
+    if show_statusbar:
+        status_bar.pack_forget()
+        show_statusbar = False
+    else:
+        status_bar.pack(side=tk.BOTTOM)
+        show_statusbar = True
 
 
 view.add_checkbutton(label='ToolBar', onvalue=True, offvalue=0, variable=show_toolbar, image=tool_bar_icon, compound=tk.LEFT, command=hide_toolbar)
