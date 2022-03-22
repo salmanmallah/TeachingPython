@@ -405,7 +405,12 @@ def find_func(event=None):
                 text_editor.tag_config('match', foreground='red', background='yellow')
 
     def replace():
-        pass
+        word = find_input.get()
+        replace_text = replace_input.get()
+        content = text_editor.get(1.0, tk.END)
+        new_content = content.replace(word, replace_text)
+        text_editor.delete(1.0, tk.END)
+        text_editor.insert(1.0, new_content)
 
     find_dialogue = tk.Toplevel()
     find_dialogue.geometry("450x250+500+200")
@@ -445,9 +450,21 @@ def find_func(event=None):
 
 edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT, command=find_func)
 
-# View Check Button
-view.add_checkbutton(label='ToolBar', image=tool_bar_icon, compound=tk.LEFT)
-view.add_checkbutton(label='StatusBar', image=status_bar_icon, compound=tk.LEFT)
+
+# ########   View Check Button
+
+show_toolbar = tk.BooleanVar()
+show_toolbar.set(True)
+show_statusbar = tk.BooleanVar()
+show_statusbar.set(True)
+
+
+def hide_toolbar():
+    global show_toolbar
+
+
+view.add_checkbutton(label='ToolBar', onvalue=True, offvalue=0, variable=show_toolbar, image=tool_bar_icon, compound=tk.LEFT, command=hide_toolbar)
+view.add_checkbutton(label='StatusBar', onvalue=1, offvalue=False, variable=show_statusbar, image=status_bar_icon, compound=tk.LEFT, command=hide_statusbar)
 
 # Color Chooser
 count = 0
