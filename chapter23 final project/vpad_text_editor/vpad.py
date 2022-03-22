@@ -405,12 +405,22 @@ def find_func(event=None):
     replace_input = ttk.Entry(find_frame, width=30)
 
     # Button
-    find_button = ttk.Button(find_frame, text='Find', command=find)
-    replace_button = ttk.Button(find_frame, text='Replace', command=replace)
+    find_button = ttk.Button(find_frame, text='Find', command=None)
+    replace_button = ttk.Button(find_frame, text='Replace', command=None)
 
     # Label Grid
+    text_find_label.grid(row=0, column=0, padx=4, pady=4)
+    text_replace_label.grid(row=1, column=0, padx=4, pady=4)
 
+    # Entry Grid
+    find_input.grid(row=0, column=1)
+    replace_input.grid(row=1, column=1)
 
+    # Button Grid
+    find_button.grid(row=2, column=0, padx=8, pady=4)
+    replace_button.grid(row=2, column=1, padx=8, pady=4)
+
+    find_dialogue.mainloop()
 
 
 edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT, command=find_func)
