@@ -386,9 +386,34 @@ edit.add_command(label='Clear All', accelerator='Ctrl+Alt+X', image=clear_all_ic
 
 # ########### Find Functionality
 
+def find_func(event=None):
+    find_dialogue = tk.Toplevel()
+    find_dialogue.geometry("450x250+500+200")
+    find_dialogue.title('Find')
+    find_dialogue.resizable(0, 0)
+
+    # Frame
+    find_frame = ttk.LabelFrame(find_dialogue,text='Find / Replace')
+    find_frame.pack(pady=20)
+
+    # Labels
+    text_find_label = ttk.Label(find_frame, text='Find : ')
+    text_replace_label = ttk.Label(find_frame, text='Replace: ')
+
+    # Entry
+    find_input = ttk.Entry(find_frame, width=30)
+    replace_input = ttk.Entry(find_frame, width=30)
+
+    # Button
+    find_button = ttk.Button(find_frame, text='Find', command=find)
+    replace_button = ttk.Button(find_frame, text='Replace', command=replace)
+
+    # Label Grid
 
 
-edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT)
+
+
+edit.add_command(label='Find', accelerator='Ctrl+F', image=find_icon, compound=tk.LEFT, command=find_func)
 
 # View Check Button
 view.add_checkbutton(label='ToolBar', image=tool_bar_icon, compound=tk.LEFT)
