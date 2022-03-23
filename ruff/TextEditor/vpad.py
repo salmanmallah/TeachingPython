@@ -42,13 +42,20 @@ edit_menu.add_command(label='Clear', image=clear_icon, compound=tk.LEFT, acceler
 edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F')
 
 # View menu
+toolbar_icon = tk.PhotoImage(file='icons2/tool_bar.png')
+statusbar_icon = tk.PhotoImage(file='icons2/status_bar.png')
+
 view_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='View', menu=view_menu)
 
+view_menu.add_checkbutton(label='ToolBar', image=toolbar_icon, compound=tk.LEFT)
+view_menu.add_checkbutton(label='Status Bar', image=statusbar_icon, compound=tk.LEFT)
 
 # Theme menu
 theme_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='Theme', menu=theme_menu)
+
+
 
 win.config(menu=main_menu)
 
