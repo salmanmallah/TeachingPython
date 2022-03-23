@@ -7,7 +7,7 @@ from tkinter import font, colorchooser, filedialog, messagebox
 # starter code
 main_application = tk.Tk()
 main_application.geometry('1200x700')
-main_application.title('SM Code Editor')
+main_application.title('Salman\'s Diary')
 main_application.wm_iconbitmap('icon.ico')
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
