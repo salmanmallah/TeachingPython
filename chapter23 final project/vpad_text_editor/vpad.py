@@ -3,11 +3,12 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 
+
 # starter code
 main_application = tk.Tk()
 main_application.geometry('1200x700')
 main_application.title('SM Code Editor')
-
+main_application.wm_iconbitmap('icon.ico')
 # #########################  main menu  ##############################
 main_menu = tk.Menu()
 # --------File----------
@@ -504,4 +505,13 @@ for i in color_dict:
 # ------------&&&&&&&&&&&&&  End Main Menu Functionality  &&&&&&&&&&&&--------------
 
 main_application.config(menu=main_menu)
+
+# Bind shortcut keys
+main_application.bind('<Control-n>', new_file)
+main_application.bind('<Control-o>', open_file)
+main_application.bind('<Control-s>', save_file)
+main_application.bind('<Control-Alt-s>', save_as)
+main_application.bind('<Control-q>', exit_func)
+main_application.bind('<Control-f>', find_func)
+
 main_application.mainloop()
