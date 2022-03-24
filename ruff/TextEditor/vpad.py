@@ -123,11 +123,6 @@ align_left_icon = tk.PhotoImage(file='icons2/align_left.png')
 align_center_icon = tk.PhotoImage(file='icons2/align_center.png')
 align_right_icon = tk.PhotoImage(file='icons2/align_right.png')
 
-
-
-
-
-
 bold_button = ttk.Button(toolbar, image=bold_icon)
 bold_button.grid(row=0, column=2, padx=5)
 
@@ -195,7 +190,7 @@ text_editor.configure(font=(current_font_family, current_font_size))
 
 # Bold button functionality
 def bold_Button():
-    font_dict = tk.font.Font(font=text_editor['font']).actual()
+    font_dict = font.Font(font=text_editor['font']).actual()
     if font_dict['weight'] == 'normal':
         text_editor.config(font=(current_font_family, current_font_size, 'bold'))
     elif font_dict['weight'] == 'bold':
@@ -205,6 +200,28 @@ def bold_Button():
 bold_button.config(command=bold_Button)
 
 
+def Italic_Button():
+    font_dict = font.Font(font=text_editor['font']).actual()
+    print(font_dict)
+    if font_dict['slant'] == 'roman':
+        text_editor.config(font=(current_font_family, current_font_size, 'italic'))
+    elif font_dict['slant'] == 'italic':
+        text_editor.config(font=(current_font_family, current_font_size, 'roman'))
+
+
+italic_button.config(command=Italic_Button)
+
+
+def Underline_Button():
+    font_dict = font.Font(font=text_editor['font']).actual()
+    print(font_dict)
+    if font_dict['underline'] == 0:
+        text_editor.config(font=(current_font_family, current_font_size, 'underline'))
+    elif font_dict['underline'] == 1:
+        text_editor.config(font=(current_font_family, current_font_size, 'normal'))
+
+
+underline_button.config(command=Underline_Button)
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
 # ------------------------------------ START OF STATUS BAR ---------------------------------------------
