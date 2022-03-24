@@ -116,9 +116,41 @@ choose_font_size.grid(row=0, column=1, padx=5)
 
 
 # ToolBar Buttons
+# icons
 bold_icon = tk.PhotoImage(file='icons2/bold.png')
 italic_icon = tk.PhotoImage(file='icons2/italic.png')
 underline_icon = tk.PhotoImage(file='icons2/underline.png')
+color_chooser_icon = tk.PhotoImage(file='icons2/font_color.png')
+align_left_icon = tk.PhotoImage(file='icons2/align_left.png')
+align_center_icon = tk.PhotoImage(file='icons2/align_center.png')
+align_right_icon = tk.PhotoImage(file='icons2/align_right.png')
 
-bold_button = ttk.Button(toolbar, image=bold_icon).grid(row=0, column=2)
+bold_button = ttk.Button(toolbar, image=bold_icon)
+bold_button.grid(row=0, column=2, padx=5)
+
+italic_button = ttk.Button(toolbar, image=italic_icon)
+italic_button.grid(row=0, column=3, padx=5)
+
+underline_button = ttk.Button(toolbar, image=underline_icon)
+underline_button.grid(row=0, column=4, padx=5)
+
+color_chooser_button = ttk.Button(toolbar, image=color_chooser_icon)
+color_chooser_button.grid(row=0, column=5, padx=5)
+
+# alignment Button
+left_align_button = ttk.Button(toolbar, image=align_left_icon)
+left_align_button.grid(row=0, column=6, padx=5)
+
+center_align_button = ttk.Button(toolbar, image=align_left_icon)
+center_align_button.grid(row=0, column=7, padx=5)
+
+right_align_button = ttk.Button(toolbar, image=align_left_icon)
+right_align_button.grid(row=0, column=8, padx=5)
+
+# ------------------------------------ End Toolbar -----------------------------------------------
+
+# ------------------------------------ Start of Text Editor -----------------------------------------------
+# ------------------------------------ End of Text Editor  -----------------------------------------------
+
+
 win.mainloop()
