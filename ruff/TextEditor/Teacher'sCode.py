@@ -43,6 +43,7 @@ dark_icon = tk.PhotoImage(file='icons2/dark.png')
 red_icon = tk.PhotoImage(file='icons2/red.png')
 monokai_icon = tk.PhotoImage(file='icons2/monokai.png')
 night_blue_icon = tk.PhotoImage(file='icons2/night_blue.png')
+
 color_theme = tk.Menu(main_menu, tearoff=False)
 
 theme_choice = tk.StringVar()
