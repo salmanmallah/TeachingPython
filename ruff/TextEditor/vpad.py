@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, font
 
-
 win = tk.Tk()
 win.geometry('1200x800')
 win.title('V Pad')
@@ -97,12 +96,12 @@ win.config(menu=main_menu)
 toolbar = ttk.Label(win)
 toolbar.pack(fill=tk.X, side=tk.TOP)
 
-fonts = tk.StringVar()
+family = tk.StringVar()
 font_family = font.families()
 
-choose_font = ttk.Combobox(toolbar, width=30, state='readonly', textvariable=fonts)
+choose_font = ttk.Combobox(toolbar, width=30, state='readonly', textvariable=family)
 choose_font['values'] = font_family
-choose_font.current(4)
+choose_font.current(2)
 choose_font.grid(row=0, column=0, padx=5)
 
 # choose font size
@@ -113,7 +112,6 @@ choose_font_size = ttk.Combobox(toolbar, width=15, state='readonly', textvariabl
 choose_font_size['values'] = size_tuple
 choose_font_size.current(2)
 choose_font_size.grid(row=0, column=1, padx=5)
-
 
 # ToolBar Buttons
 # icons
@@ -153,9 +151,26 @@ right_align_button.grid(row=0, column=8, padx=5)
 
 text_editor = tk.Text(win)
 text_editor.config(wrap='word', relief=tk.FLAT)
-text_editor.pack(fill=tk.BOTH, expand=tk.TRUE)
+
+scrollbar = tk.Scrollbar(win)
+text_editor.focus()
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+text_editor.pack(fill='both', expand=tk.TRUE)
+scrollbar.config(command=text_editor.yview())
+text_editor.config(yscrollcommand=scrollbar.set)
+
+# font family and font size
+current_font_family = 'Lobster'
+current_font_size = 30
+text_editor.config(font=(current_font_family, current_font_size))
 
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
+# ------------------------------------ START OF STATUS BAR ---------------------------------------------
+
+status_bar = tk.Label(win, text='Status Bar')
+status_bar.pack(side=tk.BOTTOM)
+
+# ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
 win.mainloop()
