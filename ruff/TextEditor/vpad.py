@@ -123,6 +123,11 @@ align_left_icon = tk.PhotoImage(file='icons2/align_left.png')
 align_center_icon = tk.PhotoImage(file='icons2/align_center.png')
 align_right_icon = tk.PhotoImage(file='icons2/align_right.png')
 
+
+
+
+
+
 bold_button = ttk.Button(toolbar, image=bold_icon)
 bold_button.grid(row=0, column=2, padx=5)
 
@@ -150,7 +155,7 @@ right_align_button.grid(row=0, column=8, padx=5)
 # ------------------------------------ Start of Text Editor -----------------------------------------------
 
 text_editor = tk.Text(win)
-text_editor.config(wrap='word', relief=tk.FLAT)
+text_editor.config(wrap='word', relief=tk.RIDGE)
 
 scrollbar = tk.Scrollbar(win)
 text_editor.focus()
@@ -162,7 +167,43 @@ text_editor.config(yscrollcommand=scrollbar.set)
 # font family and font size
 current_font_family = 'Lobster'
 current_font_size = 30
-text_editor.config(font=(current_font_family, current_font_size))
+
+
+# font family functionality
+def change_font_family(event=None):
+    global current_font_family
+    current_family = family.get()
+
+    current_font_family = current_family
+    text_editor.config(font=(current_font_family, current_font_size))
+
+
+choose_font.bind('<<ComboboxSelected>>', change_font_family)
+
+
+# font size functionality
+def change_font_size(event=None):
+    global current_font_size
+    current_size = font_size_var.get()
+    current_font_size = current_size
+    text_editor.config(font=(current_font_family, current_font_size))
+
+
+choose_font_size.bind('<<ComboboxSelected>>', change_font_size)
+text_editor.configure(font=(current_font_family, current_font_size))
+
+
+# Bold button functionality
+def bold_Button():
+    font_dict = tk.font.Font(font=text_editor['font']).actual()
+    if font_dict['weight'] == 'normal':
+        text_editor.config(font=(current_font_family, current_font_size, 'bold'))
+    elif font_dict['weight'] == 'bold':
+        text_editor.config(font=(current_font_family, current_font_size, 'normal'))
+
+
+bold_button.config(command=bold_Button)
+
 
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
