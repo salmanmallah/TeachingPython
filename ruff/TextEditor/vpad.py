@@ -150,6 +150,11 @@ right_align_button.grid(row=0, column=8, padx=5)
 # ------------------------------------ End Toolbar -----------------------------------------------
 
 # ------------------------------------ Start of Text Editor -----------------------------------------------
+
+text_editor = tk.Text(win)
+text_editor.pack(fill=tk.BOTH, expand=tk.TRUE)
+print(text_editor.get(1.0, tk.END))
+
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
 
