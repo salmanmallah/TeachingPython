@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, font
+from tkinter import ttk, font, colorchooser
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -132,6 +132,7 @@ italic_button.grid(row=0, column=3, padx=5)
 underline_button = ttk.Button(toolbar, image=underline_icon)
 underline_button.grid(row=0, column=4, padx=5)
 
+# color-chooser Button
 color_chooser_button = ttk.Button(toolbar, image=color_chooser_icon)
 color_chooser_button.grid(row=0, column=5, padx=5)
 
@@ -188,7 +189,7 @@ choose_font_size.bind('<<ComboboxSelected>>', change_font_size)
 text_editor.configure(font=(current_font_family, current_font_size))
 
 
-# Bold button functionality
+# Bold Button functionality
 def bold_Button():
     font_dict = font.Font(font=text_editor['font']).actual()
     if font_dict['weight'] == 'normal':
@@ -200,6 +201,7 @@ def bold_Button():
 bold_button.config(command=bold_Button)
 
 
+# Italic Button functionality
 def Italic_Button():
     font_dict = font.Font(font=text_editor['font']).actual()
     print(font_dict)
@@ -212,6 +214,7 @@ def Italic_Button():
 italic_button.config(command=Italic_Button)
 
 
+# Underline Button functionality
 def Underline_Button():
     font_dict = font.Font(font=text_editor['font']).actual()
     print(font_dict)
@@ -222,6 +225,50 @@ def Underline_Button():
 
 
 underline_button.config(command=Underline_Button)
+
+
+# color-chooser functionality
+def colorChooser():
+    color = colorchooser.askcolor()
+    text_editor.config(foreground=color[1])
+
+
+color_chooser_button.config(command=colorChooser)
+
+
+# Align Button Functinality
+
+# LEFT
+def align_left():
+    content = text_editor.get(1.0, tk.END)
+    text_editor.tag_config('left', justify=tk.LEFT)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, content, 'left')
+
+
+left_align_button.configure(command=align_left)
+
+
+# CENTER
+def align_center():
+    content = text_editor.get(1.0, tk.END)
+    text_editor.tag_config('center', justify=tk.CENTER)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, content, 'center')
+
+
+center_align_button.configure(command=align_center)
+
+
+# RIGHT
+def align_right():
+    content = text_editor.get(1.0, tk.END)
+    text_editor.tag_config('right', justify=tk.RIGHT)
+    text_editor.delete(1.0, tk.END)
+    text_editor.insert(tk.INSERT, content, 'right')
+
+
+right_align_button.configure(command=align_right)
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
 # ------------------------------------ START OF STATUS BAR ---------------------------------------------
