@@ -206,7 +206,7 @@ text_editor.configure(font=(current_font_family, current_font_size))
 def bold_Button():
     font_dict = font.Font(font=text_editor['font']).actual()
     if font_dict['weight'] == 'normal':
-        text_editor.config(font=(current_font_family, current_font_size, 'bold'))
+        text_editor.config(font=(current_font_family, current_font_size, 'bold' ))
     elif font_dict['weight'] == 'bold':
         text_editor.config(font=(current_font_family, current_font_size, 'normal'))
 
