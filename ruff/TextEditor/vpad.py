@@ -160,6 +160,19 @@ text_editor.pack(fill='both', expand=tk.TRUE)
 scrollbar.config(command=text_editor.yview())
 text_editor.config(yscrollcommand=scrollbar.set)
 
+#
+# # lock button
+# lock = ttk.Button(text_editor, text='Lock the Text')
+# lock.pack(side=tk.TOP)
+#
+#
+# def lock_text():
+#     print('func called')
+#     text_editor.config(state=tk.DISABLED)
+#
+# lock.configure(command=lock_text)
+
+
 # font family and font size
 current_font_family = 'Lobster'
 current_font_size = 30
