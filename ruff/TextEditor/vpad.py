@@ -280,6 +280,17 @@ text_editor.configure(font=(current_font_family, current_font_size))
 status = ttk.Label(text_editor, text="STATUS BAR SALMAN")
 status.pack(side=tk.BOTTOM)
 
+
+# status bar functionality
+def changed(event=None):
+    if text_editor.edit_modified():
+        words = len(text_editor.get(1.0, 'end-1c').split())
+        characters = len(text_editor.get(1.0, 'end-1c'))
+        status.config(text=f'words: {words}, Characters: {characters}')
+    text_editor.edit_modified(False)
+
+
+text_editor.bind('<<Modified>>', changed)
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
 win.mainloop()
