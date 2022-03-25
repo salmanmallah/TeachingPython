@@ -289,6 +289,7 @@ right_align_button.configure(command=align_right)
 status_bar = tk.Label(win, text='Status Bar')
 status_bar.pack(side=tk.BOTTOM)
 
+
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
 win.mainloop()
