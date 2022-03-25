@@ -1,5 +1,6 @@
 import tkinter as tk
-from tkinter import ttk, font, colorchooser
+from tkinter import ttk
+from tkinter import font, colorchooser
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -108,10 +109,10 @@ choose_font.grid(row=0, column=0, padx=5)
 font_size_var = tk.StringVar()
 size_tuple = tuple(range(8, 81, 2))
 
-choose_font_size = ttk.Combobox(toolbar, width=15, state='readonly', textvariable=font_size_var)
-choose_font_size['values'] = size_tuple
-choose_font_size.current(2)
-choose_font_size.grid(row=0, column=1, padx=5)
+font_size_combobox = ttk.Combobox(toolbar, width=15, state='readonly', textvariable=font_size_var)
+font_size_combobox['values'] = size_tuple
+font_size_combobox.current(2)
+font_size_combobox.grid(row=0, column=1, padx=5)
 
 # ToolBar Buttons
 # icons
@@ -151,31 +152,17 @@ right_align_button.grid(row=0, column=8, padx=5)
 # ------------------------------------ Start of Text Editor -----------------------------------------------
 
 text_editor = tk.Text(win)
-text_editor.config(wrap='word', relief=tk.RIDGE)
+text_editor.config(wrap='word', relief=tk.FLAT)
 
 scrollbar = tk.Scrollbar(win)
 text_editor.focus()
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-text_editor.pack(fill='both', expand=tk.TRUE)
-scrollbar.config(command=text_editor.yview())
+text_editor.pack(fill=tk.BOTH, expand=True)
+scrollbar.config(command=text_editor.yview)
 text_editor.config(yscrollcommand=scrollbar.set)
-
-#
-# # lock button
-# lock = ttk.Button(text_editor, text='Lock the Text')
-# lock.pack(side=tk.TOP)
-#
-#
-# def lock_text():
-#     print('func called')
-#     text_editor.config(state=tk.DISABLED)
-#
-# lock.configure(command=lock_text)
 
 
 # font family and font size
-current_font_family = 'Lobster'
-current_font_size = 30
 
 
 # font family functionality
@@ -187,9 +174,6 @@ def change_font_family(event=None):
     text_editor.config(font=(current_font_family, current_font_size))
 
 
-choose_font.bind('<<ComboboxSelected>>', change_font_family)
-
-
 # font size functionality
 def change_font_size(event=None):
     global current_font_size
@@ -198,15 +182,17 @@ def change_font_size(event=None):
     text_editor.config(font=(current_font_family, current_font_size))
 
 
-choose_font_size.bind('<<ComboboxSelected>>', change_font_size)
-text_editor.configure(font=(current_font_family, current_font_size))
+choose_font.bind('<<ComboboxSelected>>', change_font_family)
+font_size_combobox.bind('<<ComboboxSelected>>', change_font_size)
 
+
+# text_editor.config(font=(current_font_family, current_font_size))
 
 # Bold Button functionality
 def bold_Button():
     font_dict = font.Font(font=text_editor['font']).actual()
     if font_dict['weight'] == 'normal':
-        text_editor.config(font=(current_font_family, current_font_size, 'bold' ))
+        text_editor.config(font=(current_font_family, current_font_size, 'bold'))
     elif font_dict['weight'] == 'bold':
         text_editor.config(font=(current_font_family, current_font_size, 'normal'))
 
@@ -282,13 +268,17 @@ def align_right():
 
 
 right_align_button.configure(command=align_right)
+
+current_font_family = 'Lobster'
+current_font_size = 30
+
+text_editor.configure(font=(current_font_family, current_font_size))
 # ------------------------------------ End of Text Editor  -----------------------------------------------
 
 # ------------------------------------ START OF STATUS BAR ---------------------------------------------
 
-status_bar = tk.Label(win, text='Status Bar')
-status_bar.pack(side=tk.BOTTOM)
-
+status = ttk.Label(text_editor, text="STATUS BAR SALMAN")
+status.pack(side=tk.BOTTOM)
 
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
