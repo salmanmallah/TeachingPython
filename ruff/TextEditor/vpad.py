@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import font, colorchooser
+from tkinter import font, colorchooser, filedialog
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -19,8 +19,25 @@ exit_icon = tk.PhotoImage(file='icons2/exit.png')
 
 file_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='File', menu=file_menu)
-file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N')
-file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O')
+
+# NEW FILE
+url = ""
+
+
+def new_file(event=None):
+    global url
+    url = ""
+    text_editor.delete(1.0, tk.END)
+
+
+file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
+
+# OPEN FILE
+def open_file(event=None):
+    ask_open_file = filedialog.askopenfilename()
+    print(ask_open_file)
+
+file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
 file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S')
 file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
