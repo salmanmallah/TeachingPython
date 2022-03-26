@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import font, colorchooser, filedialog
+from tkinter import font, colorchooser, filedialog, messagebox
+import os
+import sys
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -32,13 +34,49 @@ def new_file(event=None):
 
 file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
 
+
 # OPEN FILE
+extensions = [('Text File', '.txt'), ('All Files', '*.*')]
+
+
 def open_file(event=None):
-    ask_open_file = filedialog.askopenfilename()
-    print(ask_open_file)
+    global url, extensions
+    url = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select File', filetypes=extensions)
+    try:
+        with open(url, 'r') as fr:
+            text_editor.delete(1.0, tk.END)
+            text_editor.insert(1.0, fr.read())
+    except FileNotFoundError:
+        print('You did not select any file!')
+    except:
+        messagebox.showerror('Invalid file', f'OOPS!!! {sys.exc_info()[0]} is occurred')
+    win.title(os.path.basename(url))
+
 
 file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
-file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S')
+
+
+# SAVE FILE
+
+def save_file(event=None):
+    global url, extensions
+    try:
+        if url:
+            content = str(text_editor.get(1.0, tk.END))
+            with open(url, 'w') as fw:
+                fw.write(content)
+        else:
+            content = str(text_editor.get(1.0, tk.END))
+            url = filedialog.asksaveasfile(mode='w', defaultextension='.txt', filetypes=extensions)
+            url = url.name
+            with open(url, 'w') as fw:
+                fw.write(content)
+    except:
+        print(f'Error {sys.exc_info()}')
+
+
+file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
+
 file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
 
@@ -252,7 +290,7 @@ def colorChooser():
 color_chooser_button.config(command=colorChooser)
 
 
-# Align Button Functinality
+# Align Button Functionality
 
 # LEFT
 def align_left():
@@ -311,3 +349,4 @@ text_editor.bind('<<Modified>>', changed)
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
 win.mainloop()
+
