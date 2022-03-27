@@ -1,3 +1,4 @@
+.gitignore
 .idea/
 chapter4/__pycache__/
 #ruff
