@@ -22,61 +22,9 @@ exit_icon = tk.PhotoImage(file='icons2/exit.png')
 file_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='File', menu=file_menu)
 
-# NEW FILE
-url = ""
-
-
-def new_file(event=None):
-    global url
-    url = ""
-    text_editor.delete(1.0, tk.END)
-
-
-file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
-
-
-# OPEN FILE
-extensions = [('Text File', '.txt'), ('All Files', '*.*')]
-
-
-def open_file(event=None):
-    global url, extensions
-    url = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select File', filetypes=extensions)
-    try:
-        with open(url, 'r') as fr:
-            text_editor.delete(1.0, tk.END)
-            text_editor.insert(1.0, fr.read())
-    except FileNotFoundError:
-        print('You did not select any file!')
-    except:
-        messagebox.showerror('Invalid file', f'OOPS!!! {sys.exc_info()[0]} is occurred')
-    win.title(os.path.basename(url))
-
-
-file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
-
-
-# SAVE FILE
-
-def save_file(event=None):
-    global url, extensions
-    try:
-        if url:
-            content = str(text_editor.get(1.0, tk.END))
-            with open(url, 'w') as fw:
-                fw.write(content)
-        else:
-            content = str(text_editor.get(1.0, tk.END))
-            url = filedialog.asksaveasfile(mode='w', defaultextension='.txt', filetypes=extensions)
-            url = url.name
-            with open(url, 'w') as fw:
-                fw.write(content)
-    except:
-        print(f'Error {sys.exc_info()}')
-
-
-file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
-
+file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=lambda: new_file())
+file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=lambda: open_file())
+file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=lambda: save_file())
 file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
 
@@ -348,5 +296,54 @@ def changed(event=None):
 text_editor.bind('<<Modified>>', changed)
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
-win.mainloop()
+# ------------------------------------ START OF MAIN MENU FUNCTIONALITY -----------------------------------------------
 
+url = ""
+
+
+# NEW FILE
+def new_file(event=None):
+    global url
+    url = ""
+    text_editor.delete(1.0, tk.END)
+
+
+# OPEN FILE
+extensions = [('Text File', '.txt'), ('All Files', '*.*')]
+
+
+def open_file(event=None):
+    global url, extensions
+    url = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select File', filetypes=extensions)
+    try:
+        with open(url, 'r') as fr:
+            text_editor.delete(1.0, tk.END)
+            text_editor.insert(1.0, fr.read())
+    except FileNotFoundError:
+        print('You did not select any file!')
+    except:
+        messagebox.showerror('Invalid file', f'OOPS!!! {sys.exc_info()[0]} is occurred')
+    win.title(os.path.basename(url))
+
+
+
+# SAVE FILE
+def save_file(event=None):
+    global url, extensions
+    try:
+        if url:
+            content = str(text_editor.get(1.0, tk.END))
+            with open(url, 'w') as fw:
+                fw.write(content)
+        else:
+            content = str(text_editor.get(1.0, tk.END))
+            url = filedialog.asksaveasfile(mode='w', defaultextension='.txt', filetypes=extensions)
+            url = url.name
+            with open(url, 'w') as fw:
+                fw.write(content)
+    except:
+        print(f'Error {sys.exc_info()}')
+
+
+
+win.mainloop()
