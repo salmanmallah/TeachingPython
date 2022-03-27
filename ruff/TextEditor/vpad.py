@@ -25,7 +25,7 @@ main_menu.add_cascade(label='File', menu=file_menu)
 file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=lambda: new_file())
 file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=lambda: open_file())
 file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=lambda: save_file())
-file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
+file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=lambda: save_as_file())
 file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
 
 # Edit menu
@@ -326,7 +326,6 @@ def open_file(event=None):
     win.title(os.path.basename(url))
 
 
-
 # SAVE FILE
 def save_file(event=None):
     global url, extensions
@@ -344,6 +343,7 @@ def save_file(event=None):
     except:
         print(f'Error {sys.exc_info()}')
 
+# SAVE AS FILE
 
 
 win.mainloop()
