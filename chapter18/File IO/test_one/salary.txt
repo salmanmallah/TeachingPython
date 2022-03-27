@@ -1,0 +1,4 @@
+Qadeer, 500
+Salman, 10
+Noman, 100
+Akram, 800
