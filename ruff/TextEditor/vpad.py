@@ -368,11 +368,15 @@ def save_as_file(event=None):
 def exit_file():
     global url, text_changed
     if text_changed:
-        save_warning = messagebox.showwarning()
-
+        response = messagebox.askyesnocancel('Warning', 'Do you want to save the file')
+        if response == True:
+            save_file()
+            win.destroy()
+        elif response == False:
+            print('data is not present, exiting the application in 3 seconds')
+            win.destroy()
     else:
-        print('data is not present, exiting the application in 3 seconds')
-        time.sleep(3)
+        print('data is not present, exiting the application')
         win.destroy()
 
 
