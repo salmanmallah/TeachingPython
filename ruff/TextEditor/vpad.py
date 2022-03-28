@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 import os
 import sys
+import time
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -26,7 +27,7 @@ file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator
 file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=lambda: open_file())
 file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=lambda: save_file())
 file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=lambda: save_as_file())
-file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
+file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q', command=lambda: exit_file())
 
 # Edit menu
 # icon
@@ -280,20 +281,24 @@ text_editor.configure(font=(current_font_family, current_font_size))
 
 # ------------------------------------ START OF STATUS BAR ---------------------------------------------
 
-status = ttk.Label(text_editor, text="STATUS BAR SALMAN")
+status = ttk.Label(text_editor, text="Status Bar", font=('Cinzel', 15))
 status.pack(side=tk.BOTTOM)
 
-
 # status bar functionality
-def changed(event=None):
+text_changed = False
+
+
+def status_bar(event=None):
+    global text_changed
     if text_editor.edit_modified():
+        text_changed = True
         words = len(text_editor.get(1.0, 'end-1c').split())
         characters = len(text_editor.get(1.0, 'end-1c'))
         status.config(text=f'words: {words}, Characters: {characters}')
     text_editor.edit_modified(False)
 
 
-text_editor.bind('<<Modified>>', changed)
+text_editor.bind('<<Modified>>', status_bar)
 # ------------------------------------ END OF STATUS BAR -----------------------------------------------
 
 # ------------------------------------ START OF MAIN MENU FUNCTIONALITY -----------------------------------------------
@@ -309,7 +314,7 @@ def new_file(event=None):
 
 
 # OPEN FILE
-extensions = [('Text File', '.txt'), ('All Files', '*.*')]
+extensions = [('All Files', '*.*'), ('Text File', '.txt')]
 
 
 def open_file(event=None):
@@ -340,10 +345,39 @@ def save_file(event=None):
             url = url.name
             with open(url, 'w') as fw:
                 fw.write(content)
+    except AttributeError:
+        print('You did not Save the file')
     except:
         print(f'Error {sys.exc_info()}')
 
+
 # SAVE AS FILE
+def save_as_file(event=None):
+    global url
+    url = ''
+    try:
+        content = str(text_editor.get(1.0, tk.END))
+        url = filedialog.asksaveasfile(mode='w', defaultextension='*.*', filetypes=extensions)
+        url.write(content)
+        url.close()
+    except:
+        print(f'Sorry {sys.exc_info()[0]}')
+
+
+# EXIT FILE FUNCTIONALITY
+def exit_file():
+    global url, text_changed
+    if text_changed:
+        response = messagebox.askyesnocancel('Warning', 'Do you want to save the file')
+        if response is True:
+            save_file()
+            win.destroy()
+        elif response is False:
+            print('data is not present, exiting the application in 3 seconds')
+            win.destroy()
+    else:
+        print('data is not present, exiting the application')
+        win.destroy()
 
 
 win.mainloop()
