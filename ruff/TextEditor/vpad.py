@@ -369,10 +369,10 @@ def exit_file():
     global url, text_changed
     if text_changed:
         response = messagebox.askyesnocancel('Warning', 'Do you want to save the file')
-        if response == True:
+        if response is True:
             save_file()
             win.destroy()
-        elif response == False:
+        elif response is False:
             print('data is not present, exiting the application in 3 seconds')
             win.destroy()
     else:
