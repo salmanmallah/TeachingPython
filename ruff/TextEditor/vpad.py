@@ -43,7 +43,7 @@ edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerat
 edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V', command=lambda: paste_text())
 edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X', command=lambda: cut_text())
 edit_menu.add_command(label='Clear ALL', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X', command=lambda: clear_all())
-edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F')
+edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F', command=lambda: find())
 
 # View menu
 toolbar_icon = tk.PhotoImage(file='icons2/tool_bar.png')
@@ -402,10 +402,20 @@ def paste_text(event=None):
 
 def cut_text(event=None):
     text_editor.event_generate('<Control x>')
-    # print(type(tex))
 
 
 def clear_all():
     text_editor.delete(1.0, tk.END)
+
+
+def find(event=None):
+    popup = tk.Toplevel()
+    popup.geometry('650x350+400+200')
+    popup.title('Find')
+    popup.focus()
+    lf = ttk.LabelFrame(popup, text='Find')
+    lf.grid(row=0, column=0, padx=20, pady=20)
+    ttk.Button(lf, text='False Button').pack()
+
 
 win.mainloop()
