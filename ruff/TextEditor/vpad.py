@@ -41,8 +41,8 @@ edit_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='Edit', menu=edit_menu)
 edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C', command=lambda: copy_text())
 edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V', command=lambda: paste_text())
-edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X')
-edit_menu.add_command(label='Clear', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X')
+edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X', command=lambda: cut_text())
+edit_menu.add_command(label='Clear ALL', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X', command=lambda: clear_all())
 edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F')
 
 # View menu
@@ -383,24 +383,29 @@ def exit_file():
 # <><><><><><><><><><><><><><><><> Edit Menu functionality <><><><><><><><><><><><><><><><><><>
 
 # copy text
-text_selected = ''
+# text_selected = ''
 
 
 def copy_text(event=None):
-    global text_selected
-    selected = text_editor.selection_get()
-    text_selected = selected
+    # global text_selected
+    # selected = text_editor.selection_get()
+    # text_selected = selected
+    text_editor.event_generate('<Control c>')
 
 
 def paste_text(event=None):
-    global text_selected
-    cursor_pos = text_editor.index(tk.INSERT)
-    text_editor.insert(cursor_pos, text_selected)
-    # text_editor.insert()
+    # global text_selected
+    # cursor_pos = text_editor.index(tk.INSERT)
+    # text_editor.insert(cursor_pos, text_selected)
+    text_editor.event_generate('<Control v>')
 
 
 def cut_text(event=None):
-    global text_selected
+    text_editor.event_generate('<Control x>')
+    # print(type(tex))
 
+
+def clear_all():
+    text_editor.delete(1.0, tk.END)
 
 win.mainloop()
