@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 import os
 import sys
-import time
+# import time
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -39,8 +39,8 @@ find_icon = tk.PhotoImage(file='icons2/find.png')
 
 edit_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='Edit', menu=edit_menu)
-edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C')
-edit_menu.add_command(label='Past', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V')
+edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C', command=lambda: copy_text())
+edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V', command=lambda: paste_text())
 edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X')
 edit_menu.add_command(label='Clear', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X')
 edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F')
@@ -378,6 +378,29 @@ def exit_file():
     else:
         print('data is not present, exiting the application')
         win.destroy()
+
+
+# <><><><><><><><><><><><><><><><> Edit Menu functionality <><><><><><><><><><><><><><><><><><>
+
+# copy text
+text_selected = ''
+
+
+def copy_text(event=None):
+    global text_selected
+    selected = text_editor.selection_get()
+    text_selected = selected
+
+
+def paste_text(event=None):
+    global text_selected
+    cursor_pos = text_editor.index(tk.INSERT)
+    text_editor.insert(cursor_pos, text_selected)
+    # text_editor.insert()
+
+
+def cut_text(event=None):
+    global text_selected
 
 
 win.mainloop()
