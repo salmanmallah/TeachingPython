@@ -410,7 +410,7 @@ def clear_all():
 
 def find_func(event=None):
     popup = tk.Toplevel()
-    popup.geometry('650x350+400+200')
+    popup.geometry('450x250+500+200')
     popup.title('Find')
     popup.focus()
     lf = ttk.LabelFrame(popup, text='Find')

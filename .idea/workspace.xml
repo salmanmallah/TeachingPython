@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35e886f0-72e6-41d6-b5d8-4e386f738243" name="Changes" comment="correct miss spelling">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +66,8 @@
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.vpad (2)">
-    <configuration name="menu_bar" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.vpad (1)">
+    <configuration name="Teacher'sCode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonproject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -75,11 +75,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/chapter22/MenuBar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ruff/TextEditor" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chapter22/MenuBar/menu_bar.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ruff/TextEditor/Teacher'sCode.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.vpad (2)" />
         <item itemvalue="Python.vpad (1)" />
+        <item itemvalue="Python.Teacher'sCode" />
+        <item itemvalue="Python.vpad (2)" />
         <item itemvalue="Python.message_box" />
         <item itemvalue="Python.vpad" />
-        <item itemvalue="Python.menu_bar" />
       </list>
     </recent_temporary>
   </component>
