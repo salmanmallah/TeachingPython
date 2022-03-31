@@ -419,6 +419,7 @@ def clear_all():
 
 
 def find_func(event=None):
+    text_editor.insert(1.0, 'salman')
     popup = tk.Toplevel()
     popup.geometry('450x250+500+200')
     popup.title('Find')
@@ -452,10 +453,18 @@ def find_func(event=None):
 
     # find word function
     def find_word():
-        print('finding word Text editor')
-
+        word = word_find.get()
+        content = text_editor.get(1.0, tk.END)
+        word_length = len(word)
+        start_pos = content.find(word)
+        # print(word)
+        text_editor.tag_add('match', 2.0, )
+        text_editor.tag_config('match', background='yellow', foreground='red')
 
     def replace_word():
-            print('replacing word Text editor')
+        replace = word_replace.get()
+        print(replace)
+
+
 
 win.mainloop()

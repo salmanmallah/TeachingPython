@@ -6,6 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35e886f0-72e6-41d6-b5d8-4e386f738243" name="Changes" comment="correct miss spelling">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruff/TextEditor/Teacher'sCode.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/Teacher'sCode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +67,7 @@
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.vpad (1)">
+  <component name="RunManager" selected="Python.Teacher'sCode">
     <configuration name="Teacher'sCode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonproject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,8 +175,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.vpad (1)" />
         <item itemvalue="Python.Teacher'sCode" />
+        <item itemvalue="Python.vpad (1)" />
         <item itemvalue="Python.vpad (2)" />
         <item itemvalue="Python.message_box" />
         <item itemvalue="Python.vpad" />

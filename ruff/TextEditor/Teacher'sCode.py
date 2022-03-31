@@ -378,6 +378,7 @@ def find_func(event=None):
                 if not start_pos:
                     break
                 end_pos = f'{start_pos}+{len(word)}c'
+                print(start_pos, end_pos)
                 text_editor.tag_add('match', start_pos, end_pos)
                 matches += 1
                 start_pos = end_pos
