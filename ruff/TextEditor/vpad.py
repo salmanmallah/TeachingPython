@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 import os
 import sys
+
 # import time
 
 win = tk.Tk()
@@ -24,10 +25,14 @@ file_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='File', menu=file_menu)
 
 file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=lambda: new_file())
-file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=lambda: open_file())
-file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=lambda: save_file())
-file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=lambda: save_as_file())
-file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q', command=lambda: exit_file())
+file_menu.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O',
+                      command=lambda: open_file())
+file_menu.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S',
+                      command=lambda: save_file())
+file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S',
+                      command=lambda: save_as_file())
+file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q',
+                      command=lambda: exit_file())
 
 # Edit menu
 # icon
@@ -39,11 +44,15 @@ find_icon = tk.PhotoImage(file='icons2/find.png')
 
 edit_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='Edit', menu=edit_menu)
-edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C', command=lambda: copy_text())
-edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V', command=lambda: paste_text())
+edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C',
+                      command=lambda: copy_text())
+edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V',
+                      command=lambda: paste_text())
 edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X', command=lambda: cut_text())
-edit_menu.add_command(label='Clear ALL', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X', command=lambda: clear_all())
-edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F', command=lambda: find_func())
+edit_menu.add_command(label='Clear ALL', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X',
+                      command=lambda: clear_all())
+edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F',
+                      command=lambda: find_func())
 
 # View menu
 toolbar_icon = tk.PhotoImage(file='icons2/tool_bar.png')
@@ -87,7 +96,8 @@ def chooseTheme():
 
 counter = 0
 for i in color_dict:
-    theme_menu.add_radiobutton(label=i, image=color_icons[counter], compound=tk.LEFT, variable=theme_choice, command=chooseTheme)
+    theme_menu.add_radiobutton(label=i, image=color_icons[counter], compound=tk.LEFT, variable=theme_choice,
+                               command=chooseTheme)
     counter += 1
 
 win.config(menu=main_menu)
@@ -413,9 +423,39 @@ def find_func(event=None):
     popup.geometry('450x250+500+200')
     popup.title('Find')
     popup.focus()
+
     lf = ttk.LabelFrame(popup, text='Find')
     lf.pack(pady=20)
-    ttk.Button(lf, text='False Button').pack()
 
+    # Label
+    find_input_label = ttk.Label(lf, text='Find : ')
+    replace_input_label = ttk.Label(lf, text='Replace : ')
+
+    # Entry
+    word_find = tk.StringVar()
+    word_replace = tk.StringVar()
+
+    find_input_entry = ttk.Entry(lf, width=30, textvariable=word_find)
+    replace_input_entry = ttk.Entry(lf, width=30, textvariable=word_replace)
+
+    # find button
+    find_btn = ttk.Button(lf, text='Find', command=lambda: find_word())
+    replace_btn = ttk.Button(lf, text='Replace', command=lambda: replace_word())
+
+    # grids
+    find_input_label.grid(row=0, padx=5, pady=5)
+    replace_input_label.grid(row=1, padx=5, pady=5)
+    find_input_entry.grid(row=0, column=1, padx=40)
+    replace_input_entry.grid(row=1, column=1, padx=40)
+    find_btn.grid(row=2, column=0)
+    replace_btn.grid(row=2, column=1)
+
+    # find word function
+    def find_word():
+        print('finding word Text editor')
+
+
+    def replace_word():
+            print('replacing word Text editor')
 
 win.mainloop()
