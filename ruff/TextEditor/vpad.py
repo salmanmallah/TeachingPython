@@ -414,7 +414,7 @@ def find_func(event=None):
     popup.title('Find')
     popup.focus()
     lf = ttk.LabelFrame(popup, text='Find')
-    lf.grid(row=0, column=0, padx=20, pady=20)
+    lf.pack(pady=20)
     ttk.Button(lf, text='False Button').pack()
 
 
