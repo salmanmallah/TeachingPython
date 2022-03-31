@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import font, colorchooser, filedialog, messagebox
 import os
 import sys
-import time
+# import time
 
 win = tk.Tk()
 win.geometry('1200x800')
@@ -39,11 +39,11 @@ find_icon = tk.PhotoImage(file='icons2/find.png')
 
 edit_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='Edit', menu=edit_menu)
-edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C')
-edit_menu.add_command(label='Past', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V')
-edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X')
-edit_menu.add_command(label='Clear', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X')
-edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F')
+edit_menu.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C', command=lambda: copy_text())
+edit_menu.add_command(label='Paste', image=past_icon, compound=tk.LEFT, accelerator='Ctrl+V', command=lambda: paste_text())
+edit_menu.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X', command=lambda: cut_text())
+edit_menu.add_command(label='Clear ALL', image=clear_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+X', command=lambda: clear_all())
+edit_menu.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='Ctrl+F', command=lambda: find_func())
 
 # View menu
 toolbar_icon = tk.PhotoImage(file='icons2/tool_bar.png')
@@ -378,6 +378,44 @@ def exit_file():
     else:
         print('data is not present, exiting the application')
         win.destroy()
+
+
+# <><><><><><><><><><><><><><><><> Edit Menu functionality <><><><><><><><><><><><><><><><><><>
+
+# copy text
+# text_selected = ''
+
+
+def copy_text(event=None):
+    # global text_selected
+    # selected = text_editor.selection_get()
+    # text_selected = selected
+    text_editor.event_generate('<Control c>')
+
+
+def paste_text(event=None):
+    # global text_selected
+    # cursor_pos = text_editor.index(tk.INSERT)
+    # text_editor.insert(cursor_pos, text_selected)
+    text_editor.event_generate('<Control v>')
+
+
+def cut_text(event=None):
+    text_editor.event_generate('<Control x>')
+
+
+def clear_all():
+    text_editor.delete(1.0, tk.END)
+
+
+def find_func(event=None):
+    popup = tk.Toplevel()
+    popup.geometry('650x350+400+200')
+    popup.title('Find')
+    popup.focus()
+    lf = ttk.LabelFrame(popup, text='Find')
+    lf.grid(row=0, column=0, padx=20, pady=20)
+    ttk.Button(lf, text='False Button').pack()
 
 
 win.mainloop()
