@@ -454,10 +454,17 @@ def find_func(event=None):
     # find word function
     def find_word():
         word = word_find.get()
-        start_pos = text_editor.search(word, 1.0, stopindex=tk.END)
-        end_pos = f'{start_pos}+{len(word)}c'
-        text_editor.tag_add('match', start_pos, end_pos)
-        text_editor.tag_config('match', background='yellow', foreground='red')
+        # text_editor.tag_remove('match', '1.0', tk.END)
+        if word:
+            start_pos = '1.0'
+            while True:
+                start_pos = text_editor.search(word, start_pos, stopindex=tk.END)
+                if not start_pos:
+                    break
+                end_pos = f'{start_pos}+{len(word)}c'
+                text_editor.tag_add('match', start_pos, end_pos)
+                start_pos = end_pos
+                text_editor.tag_config('match', background='yellow', foreground='red')
 
     def replace_word():
         replace = word_replace.get()

@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35e886f0-72e6-41d6-b5d8-4e386f738243" name="Changes" comment="correct miss spelling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ruff/TextEditor/Teacher'sCode.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/Teacher'sCode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
