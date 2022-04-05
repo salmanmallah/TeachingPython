@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35e886f0-72e6-41d6-b5d8-4e386f738243" name="Changes" comment="correct miss spelling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff/TextEditor/vpad.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,18 +108,18 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="vpad (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonproject" />
+    <configuration name="vpad (1)" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\CCS LAPTOP HYD\Desktop\pythonproject\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ruff/TextEditor" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ruff/TextEditor/vpad.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -174,7 +173,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.vpad (1)" />
         <item itemvalue="Python.Teacher'sCode" />
         <item itemvalue="Python.vpad (2)" />
         <item itemvalue="Python.message_box" />
