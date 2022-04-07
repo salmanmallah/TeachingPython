@@ -469,6 +469,7 @@ def find_func(event=None):
     def replace_word():
         replace = word_replace.get()
         print(replace)
+        print('salman is on desktop')
 
 
 
