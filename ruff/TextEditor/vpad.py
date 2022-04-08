@@ -465,12 +465,13 @@ def find_func(event=None):
                 start_pos = end_pos
                 text_editor.tag_config('match', background='yellow', foreground='red')
 
-
     def replace_word():
+        word = word_find.get()
         replace = word_replace.get()
-        print(replace)
-        print('salman is on desktop')
-
+        content = text_editor.get(1.0, tk.END)
+        new_content = content.replace(word, replace)
+        text_editor.delete(1.0, tk.END)
+        text_editor.insert(1.0, new_content)
 
 
 win.mainloop()
