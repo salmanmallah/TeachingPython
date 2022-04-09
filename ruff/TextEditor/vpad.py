@@ -91,9 +91,10 @@ def hide_statusbar(event=None):
         show_statusbar = True
 
 
-view_menu.add_checkbutton(label='ToolBar', onvalue=True, offvalue=False, image=toolbar_icon, compound=tk.LEFT,
+# view tab
+view_menu.add_checkbutton(label='ToolBar', image=toolbar_icon, compound=tk.LEFT,
                           variable=show_toolbar, command=hide_toolbar)
-view_menu.add_checkbutton(label='Status Bar', onvalue=True, offvalue=False, image=statusbar_icon, compound=tk.LEFT,
+view_menu.add_checkbutton(label='Status Bar', image=statusbar_icon, compound=tk.LEFT,
                           variable=show_statusbar, command=hide_statusbar)
 
 # Theme menu
@@ -123,7 +124,10 @@ color_dict = {
 
 
 def chooseTheme():
-    print(theme_choice.get())
+    chosen_theme = theme_choice.get()
+    color_tuple = color_dict.get(chosen_theme)
+    fg_color, bg_color = color_tuple
+    text_editor.config(background=bg_color, foreground=fg_color)
 
 
 counter = 0
@@ -323,7 +327,8 @@ text_editor.configure(font=(current_font_family, current_font_size))
 
 # ------------------------------------ START OF STATUS BAR ---------------------------------------------
 
-status = ttk.Label(text_editor, text="Status Bar", font=('Cinzel', 15))
+status = ttk.Label(text_editor, text="Status Bar", anchor='center', font=('Cinzel', 12, 'bold'))
+# status.config(anchor='center')
 status.pack(side=tk.BOTTOM)
 
 # status bar functionality
