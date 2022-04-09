@@ -21,7 +21,7 @@ save_icon = tk.PhotoImage(file='icons2/save.png')
 save_as_icon = tk.PhotoImage(file='icons2/save_as.png')
 exit_icon = tk.PhotoImage(file='icons2/exit.png')
 
-file_menu = tk.Menu(main_menu, tearoff=0)
+file_menu = tk.Menu(main_menu, tearoff=0, )
 main_menu.add_cascade(label='File', menu=file_menu)
 
 file_menu.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=lambda: new_file())
@@ -61,8 +61,40 @@ statusbar_icon = tk.PhotoImage(file='icons2/status_bar.png')
 view_menu = tk.Menu(main_menu, tearoff=0)
 main_menu.add_cascade(label='View', menu=view_menu)
 
-view_menu.add_checkbutton(label='ToolBar', image=toolbar_icon, compound=tk.LEFT)
-view_menu.add_checkbutton(label='Status Bar', image=statusbar_icon, compound=tk.LEFT)
+show_toolbar = tk.BooleanVar()
+show_toolbar.set(True)
+show_statusbar = tk.BooleanVar()
+show_statusbar.set(True)
+
+
+def hide_toolbar(event=None):
+    global show_toolbar
+    if show_toolbar:
+        toolbar.pack_forget()
+        show_toolbar = False
+    else:
+        text_editor.pack_forget()
+        status.pack_forget()
+        toolbar.pack(fill=tk.X, side=tk.TOP)
+        text_editor.pack(fill=tk.BOTH, expand=True)
+        status.pack(side=tk.BOTTOM)
+        show_toolbar = True
+
+
+def hide_statusbar(event=None):
+    global show_statusbar
+    if show_statusbar:
+        status.pack_forget()
+        show_statusbar = False
+    else:
+        status.pack(side=tk.BOTTOM)
+        show_statusbar = True
+
+
+view_menu.add_checkbutton(label='ToolBar', onvalue=True, offvalue=False, image=toolbar_icon, compound=tk.LEFT,
+                          variable=show_toolbar, command=hide_toolbar)
+view_menu.add_checkbutton(label='Status Bar', onvalue=True, offvalue=False, image=statusbar_icon, compound=tk.LEFT,
+                          variable=show_statusbar, command=hide_statusbar)
 
 # Theme menu
 
