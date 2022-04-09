@@ -9,7 +9,7 @@ import sys
 win = tk.Tk()
 win.geometry('1200x800')
 win.title('V Pad')
-#
+
 # # ------------------------------------ Main Menu -----------------------------------------
 main_menu = tk.Menu(win)
 #
@@ -355,6 +355,7 @@ url = ""
 
 # NEW FILE
 def new_file(event=None):
+    print('newFile function is calleds')
     global url
     url = ""
     text_editor.delete(1.0, tk.END)
@@ -412,7 +413,7 @@ def save_as_file(event=None):
 
 
 # EXIT FILE FUNCTIONALITY
-def exit_file():
+def exit_file(event=None):
     global url, text_changed
     if text_changed:
         response = messagebox.askyesnocancel('Warning', 'Do you want to save the file')
@@ -473,6 +474,7 @@ def find_func(event=None):
     word_replace = tk.StringVar()
 
     find_input_entry = ttk.Entry(lf, width=30, textvariable=word_find)
+    find_input_entry.focus()
     replace_input_entry = ttk.Entry(lf, width=30, textvariable=word_replace)
 
     # find button
@@ -511,4 +513,12 @@ def find_func(event=None):
         text_editor.insert(1.0, new_content)
 
 
+# bind shortcut keys
+win.bind('<Control-n>', new_file)
+win.bind('<Control-o>', open_file)
+win.bind('<Control-s>', save_file)
+win.bind('<Control-Alt-s>', save_as_file)
+win.bind('<Control-q>', exit_file)
+
+win.bind('<Control-f>', find_func)
 win.mainloop()
