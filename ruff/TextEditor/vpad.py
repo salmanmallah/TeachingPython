@@ -33,7 +33,7 @@ file_menu.add_command(label='Save as', image=save_as_icon, compound=tk.LEFT, acc
                       command=lambda: save_as_file())
 file_menu.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q',
                       command=lambda: exit_file())
-
+#
 # Edit menu
 # icon
 copy_icon = tk.PhotoImage(file='icons2/copy.png')
