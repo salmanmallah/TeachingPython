@@ -4,7 +4,7 @@ from tkinter import colorchooser
 root = tk.Tk()
 root.title('Color Chooser')
 root.geometry('1350x700+0+0')
-root.config(background='#283593')
+# root.config(background='#283593')
 
 # Color Chooser Button
 # color_button = tk.Button(root, text='ColorChoose', background='#5f5fc4', fg='#ffffff', padx='25', pady='25', command=lambda: choose_theme())
@@ -28,8 +28,15 @@ root.config(background='#283593')
 # color_button.configs(background='#' +set_button_color)
 
 
-main_menu = tk.Menu(root, tearoff=False)
-main_menu = tk.Menu(root, tearoff=False)
+main_menu = tk.Menu(root)
+root.config(menu=main_menu)
+main_menu.config(background='red')
+
+file_menu = tk.Menu(main_menu, tearoff=0)
+main_menu.add_cascade(label='Admin', menu=file_menu)
+file_menu.add_command(label='Control Paneld')
+file_menu.add_command(label='Dashboard')
+file_menu.add_command(label='Edit DataBase')
 
 
 root.mainloop()
