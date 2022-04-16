@@ -26,17 +26,18 @@ root.geometry('1350x700+0+0')
 # set_button_color = opposite_color(hex_color)
 # root.config(background=rgb_value[1])
 # color_button.configs(background='#' +set_button_color)
-
-
-main_menu = tk.Menu(root)
-root.config(menu=main_menu)
-main_menu.config(background='red')
-
-file_menu = tk.Menu(main_menu, tearoff=0)
-main_menu.add_cascade(label='Admin', menu=file_menu)
-file_menu.add_command(label='Control Paneld')
-file_menu.add_command(label='Dashboard')
-file_menu.add_command(label='Edit DataBase')
-
+#
+#
+# main_menu = tk.Menu(root)
+# root.config(menu=main_menu)
+# main_menu.config(background='red')
+#
+# file_menu = tk.Menu(main_menu, tearoff=0)
+# main_menu.add_cascade(label='Admin', menu=file_menu)
+# file_menu.add_command(label='Control Paneld')
+# file_menu.add_command(label='Dashboard')
+# file_menu.add_command(label='Edit DataBase')
+#
+#
 
 root.mainloop()
