@@ -42,7 +42,7 @@ delete_button.config(background='red')
 delete_button.place(x=470, y=30)
 
 # Update Button
-update_button = tk.Button(root, text='Update', width=20)
+update_button = tk.Button(root, text='Update', width=20, command=lambda: update())
 update_button.config(background='yellow')
 update_button.place(x=470, y=60)
 
@@ -88,7 +88,30 @@ def delete():
         cursor.execute('DELETE FROM student WHERE id="' + id_ + '"')
         cursor.execute('commit')
 
+        id_entry.delete(0, tk.END)
+        name_entry.delete(0, tk.END)
+        phone_entry.delete(0, tk.END)
         messagebox.showinfo('status', 'Data Deleted Successfully')
+
+
+# update data from mysql database.
+def update():
+    id_ = id_var.get()
+    name = name_var.get()
+    phone = phone_var.get()
+    if id_ == '' or name == '' or phone == '':
+        messagebox.showwarning('input status', 'All fields are Required**')
+    else:
+        con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
+        cursor = con.cursor()
+        cursor.execute("UPDATE student SET name='" + name + "', phone='" + phone + "' WHERE id= '" + id_ + "' ")
+        cursor.execute('commit')
+
+        id_entry.delete(0, tk.END)
+        name_entry.delete(0, tk.END)
+        phone_entry.delete(0, tk.END)
+
+        messagebox.showinfo('Status', 'Successfully updated!')
 
 
 root.mainloop()
