@@ -36,7 +36,6 @@ submit = tk.Button(root, text='Create', width=60, command=lambda: insert())
 submit.config(background='green', height=2)
 submit.place(x=20, y=120)
 
-
 # Delete Button
 delete_button = tk.Button(root, text='Delete', width=20, command=lambda: delete())
 delete_button.config(background='red')
@@ -78,9 +77,18 @@ def insert():
         con.close()
 
 
-
 # Delete Data from mysql database
+def delete():
+    id_ = id_var.get()
+    if id_ == '':
+        messagebox.showwarning('input info', 'Please enter your Student id to Delete')
+    else:
+        con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
+        cursor = con.cursor()
+        cursor.execute('DELETE FROM student WHERE id="' + id_ + '"')
+        cursor.execute('commit')
 
+        messagebox.showinfo('status', 'Data Deleted Successfully')
 
 
 root.mainloop()
