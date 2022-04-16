@@ -8,8 +8,8 @@ root.geometry('700x300+500+300')
 root.title('tkinter With MySql')
 
 # labels
-id = ttk.Label(root, text='Enter your ID : ', font=('Cinzel', 12))
-id.place(x=20, y=30)
+id_label = ttk.Label(root, text='Enter your ID : ', font=('Cinzel', 12))
+id_label.place(x=20, y=30)
 
 name = ttk.Label(root, text='Enter your Name : ', font=('Cinzel', 12))
 name.place(x=20, y=60)
@@ -37,21 +37,29 @@ submit.place(x=20, y=120)
 
 
 # function to insert data in Mysql
-def insert(event=None):
-    id = id_var.get()
-    name = name_var.get()
-    phone = phone_var.get()
+def insert():
+    id_ = id_var.get()
+    name_ = name_var.get()
+    phone_ = phone_var.get()
 
-    if id == '' or name == '' or phone == '':
+    if id_ == '' or name_ == '' or phone_ == '':
         messagebox.showwarning('Error', 'All field are Required*')
     else:
-        print(id, name, phone)
-        # con = mysql.connect(host='localhost', user=root, password='!salman06', database='python-tkinter')
-        # cursor = con.cursor()
-        # cursor.execute("INSERT INTO student VALUES('" + id + "','" + name + "','" + phone + "')")
-        # cursor.execute('commit');
-        #
-        # messagebox.showinfo('Status','Data Inserted Successfully')
-        # con.close();
+        # make connection
+        con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
+        cursor = con.cursor()
+        # inserting data into database
+        cursor.execute("INSERT INTO student VALUES('" + id_ + "','" + name_ + "','" + phone_ + "')")
+        cursor.execute('commit')
+
+        # erase form data
+        id_entry.delete(0, tk.END)
+        name_entry.delete(0, tk.END)
+        phone_entry.delete(0, tk.END)
+
+        # showing success message
+        messagebox.showinfo('Status', 'Data Inserted Successfully')
+        con.close()
+
 
 root.mainloop()
