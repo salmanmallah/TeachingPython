@@ -4,8 +4,9 @@ from tkinter import messagebox
 import mysql.connector as mysql
 
 root = tk.Tk()
-root.geometry('700x300+500+300')
+root.geometry('700x700+500+200')
 root.title('tkinter With MySql')
+
 
 # labels
 id_label = ttk.Label(root, text='Enter your ID : ', font=('Cinzel', 12))
@@ -22,6 +23,7 @@ phone.place(x=20, y=90)
 id_var = tk.StringVar()
 id_entry = ttk.Entry(root, width=40, textvariable=id_var, )
 id_entry.place(x=200, y=30)
+id_entry.focus()
 
 name_var = tk.StringVar()
 name_entry = ttk.Entry(root, width=40, textvariable=name_var, )
@@ -51,9 +53,16 @@ get_button = tk.Button(root, text='GET', width=20, command=lambda: get())
 get_button.config(background='Blue', foreground='white')
 get_button.place(x=470, y=90)
 
+# listbox
+listbox = tk.Listbox(root, width=60, font=('arial', 12, 'bold'))
+listbox.place(x=20, y=180)
+listbox.insert(0, 'id           Name            Phone')
+
+
 # ############################# USER-MADE FUNCTIONS #################################
 # function to insert data in Mysql
 def insert():
+
     id_ = id_var.get()
     name_ = name_var.get()
     phone_ = phone_var.get()
@@ -76,7 +85,7 @@ def insert():
         id_entry.delete(0, tk.END)
         name_entry.delete(0, tk.END)
         phone_entry.delete(0, tk.END)
-
+        show()
         # showing success message
         messagebox.showinfo('Status', 'Data Inserted Successfully')
         con.close()
@@ -85,6 +94,7 @@ def insert():
 # Delete Data from mysql database
 def delete():
     id_ = id_var.get()
+
     if id_ == '':
         messagebox.showwarning('input info', 'Please enter your Student id to Delete')
     else:
@@ -96,6 +106,7 @@ def delete():
         id_entry.delete(0, tk.END)
         name_entry.delete(0, tk.END)
         phone_entry.delete(0, tk.END)
+        show()
         messagebox.showinfo('status', 'Data Deleted Successfully')
 
 
@@ -115,8 +126,9 @@ def update():
         id_entry.delete(0, tk.END)
         name_entry.delete(0, tk.END)
         phone_entry.delete(0, tk.END)
-
+        show()
         messagebox.showinfo('Status', 'Successfully updated!')
+
 
 def get():
     global name_entry
@@ -140,4 +152,18 @@ def get():
             phone_entry.insert(0, rows[2])
 
 
+# showing data in listbox
+def show():
+    con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
+    cursor = con.cursor()
+    cursor.execute('SELECT * FROM student')
+    table = cursor.fetchall()
+    counter = 0
+    listbox.delete(1, tk.END)
+    for rows in table:
+        counter += 1
+        listbox.insert(counter, str(rows[0]) + "          " + rows[1] + "         " + rows[2] + "         ")
+
+
+show()
 root.mainloop()
