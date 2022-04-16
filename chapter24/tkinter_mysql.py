@@ -31,9 +31,21 @@ phone_var = tk.StringVar()
 phone_entry = ttk.Entry(root, width=40, textvariable=phone_var, )
 phone_entry.place(x=200, y=90)
 
-submit = tk.Button(root, text='Submit', width=60, command=lambda: insert())
+# submit button
+submit = tk.Button(root, text='Create', width=60, command=lambda: insert())
 submit.config(background='green', height=2)
 submit.place(x=20, y=120)
+
+
+# Delete Button
+delete_button = tk.Button(root, text='Delete', width=20, command=lambda: delete())
+delete_button.config(background='red')
+delete_button.place(x=470, y=30)
+
+# Update Button
+update_button = tk.Button(root, text='Update', width=20)
+update_button.config(background='yellow')
+update_button.place(x=470, y=60)
 
 
 # function to insert data in Mysql
@@ -50,7 +62,11 @@ def insert():
         cursor = con.cursor()
         # inserting data into database
         cursor.execute("INSERT INTO student VALUES('" + id_ + "','" + name_ + "','" + phone_ + "')")
+        # cursor.execute("SELECT * FROM student")
         cursor.execute('commit')
+        # myresult = cursor.fetchall()
+        # for i in myresult:
+        #     print(i)
 
         # erase form data
         id_entry.delete(0, tk.END)
@@ -60,6 +76,11 @@ def insert():
         # showing success message
         messagebox.showinfo('Status', 'Data Inserted Successfully')
         con.close()
+
+
+
+# Delete Data from mysql database
+
 
 
 root.mainloop()
