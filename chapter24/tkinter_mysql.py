@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import mysql.connector as mysql
+import sys
 
 root = tk.Tk()
 root.geometry('700x700+500+200')
@@ -154,16 +155,20 @@ def get():
 
 # showing data in listbox
 def show():
-    con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
-    cursor = con.cursor()
-    cursor.execute('SELECT * FROM student')
-    table = cursor.fetchall()
-    counter = 0
-    listbox.delete(1, tk.END)
-    for rows in table:
-        counter += 1
-        listbox.insert(counter, str(rows[0]) + "          " + rows[1] + "         " + rows[2] + "         ")
-
+    try:
+        con = mysql.connect(host='localhost', user='root', password='', database='python-tkinter')
+        cursor = con.cursor()
+        cursor.execute('SELECT * FROM student')
+        table = cursor.fetchall()
+        counter = 0
+        listbox.delete(1, tk.END)
+        for rows in table:
+            counter += 1
+            listbox.insert(counter, str(rows[0]) + "          " + rows[1] + "         " + rows[2] + "         ")
+    except:
+        error = str(sys.exc_info()[1])
+        if error[:4] == '1049':
+            print('create database')
 
 show()
 root.mainloop()
