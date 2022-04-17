@@ -13,7 +13,7 @@ root.title('TreeView')
 
 def update(rows):
     for i in rows:
-        trv.insert('', tk.END, values=i)
+        trv.insert('', tk.END, values=i,)
 
 
 
@@ -28,13 +28,24 @@ wrapper2.pack(fill='both', expand=True, padx=20, pady=10)
 wrapper3.pack(fill='both', expand=True, padx=20, pady=10)
 
 # TreeView
-trv = ttk.Treeview(wrapper1, columns=(1, 2, 3, 4), show='headings', height=6,)
+trv = ttk.Treeview(wrapper1, columns=(1, 2, 3, 4), show='headings', height=6)
 trv.pack(fill='both', expand=True, padx=2, pady=2)
 
-trv.heading(1, text='Customer ID')
-trv.heading(2, text='First Name')
-trv.heading(3, text='Last Name')
-trv.heading(4, text='Age')
+# table header
+trv.heading(1, text='Customer ID', anchor=tk.CENTER)
+trv.heading(2, text='First Name', anchor=tk.CENTER)
+trv.heading(3, text='Last Name', anchor=tk.CENTER)
+trv.heading(4, text='Age', anchor=tk.CENTER)
+
+# column setting
+trv.column(1, anchor=tk.CENTER)
+trv.column(2, anchor=tk.CENTER)
+trv.column(3, anchor=tk.CENTER)
+trv.column(4, anchor=tk.CENTER)
+
+
+
+
 
 # mysql Query
 query = "SELECT id, first_name, last_name, age FROM customer "
@@ -42,6 +53,7 @@ cursor.execute(query)
 row = cursor.fetchall()
 
 update(row)
+
 
 
 root.mainloop()
