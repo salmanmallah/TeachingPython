@@ -66,9 +66,12 @@ treeview = ttk.Treeview(wrapper2, show='headings', columns=(1,2,3), height=6)
 treeview.pack(fill='both', expand=True, pady=10, padx=10)
 
 # headings
-treeview.heading(1, text='Student Id', anchor=tk.W)
+treeview.heading(1, text='Student ID', anchor=tk.W)
 treeview.heading(2, text='Student Name', anchor=tk.W)
 treeview.heading(3, text='Student Phone', anchor=tk.W)
+
+treeview.column(1, width=5)
+
 
 # data = (1, 'Salman', '03002368652')
 def show():
