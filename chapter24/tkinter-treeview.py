@@ -48,11 +48,11 @@ trv.column(4, anchor=tk.W,)
 
 
 # mysql Query
-query = "SELECT id, first_name, last_name, age FROM customer "
-cursor.execute(query)
-row = cursor.fetchall()
-
-update(row)
+# query = "SELECT id, first_name, last_name, age FROM customer "
+# cursor.execute(query)
+# # row = cursor.fetchall()
+#
+# update(row)
 
 
 
