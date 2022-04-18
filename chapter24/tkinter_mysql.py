@@ -58,12 +58,12 @@ get_button = tk.Button(wrapper1, text='GET', width=20, command=lambda: get())
 get_button.config(background='Blue', foreground='white')
 get_button.place(x=470, y=90)
 
-
-wrapper2 = tk.LabelFrame(root, text='Student Record')
+# Creating Table to show all students in table form
+wrapper2 = tk.LabelFrame(root, text='Student Record', relief=tk.RIDGE)
 wrapper2.pack(fill='both', expand=True, padx=10, pady=20)
 
 treeview = ttk.Treeview(wrapper2, show='headings', columns=(1,2,3), height=6)
-treeview.pack(fill='both', expand=True, pady=5)
+treeview.pack(fill='both', expand=True, pady=10, padx=10)
 
 # headings
 treeview.heading(1, text='Student Id', anchor=tk.W)
