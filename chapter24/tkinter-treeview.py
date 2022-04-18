@@ -32,16 +32,16 @@ trv = ttk.Treeview(wrapper1, columns=(1, 2, 3, 4), show='headings', height=6)
 trv.pack(fill='both', expand=True, padx=2, pady=2)
 
 # table header
-trv.heading(1, text='Customer ID', anchor=tk.CENTER)
-trv.heading(2, text='First Name', anchor=tk.CENTER)
-trv.heading(3, text='Last Name', anchor=tk.CENTER)
-trv.heading(4, text='Age', anchor=tk.CENTER)
+trv.heading(1, text='Customer ID', anchor=tk.W)
+trv.heading(2, text='First Name', anchor=tk.W)
+trv.heading(3, text='Last Name', anchor=tk.W)
+trv.heading(4, text='Age', anchor=tk.W)
 
 # column setting
-trv.column(1, anchor=tk.CENTER)
-trv.column(2, anchor=tk.CENTER)
-trv.column(3, anchor=tk.CENTER)
-trv.column(4, anchor=tk.CENTER)
+trv.column(1, anchor=tk.W, width=20)
+trv.column(2, anchor=tk.W, )
+trv.column(3, anchor=tk.W,)
+trv.column(4, anchor=tk.W,)
 
 
 
