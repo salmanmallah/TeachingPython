@@ -11,10 +11,30 @@ root.geometry('1300x700+0+0')
 root.title('TreeView')
 
 
+# search function
+def search():
+    global cursor
+    search_word = entrydata.get()
+    if search_word == '':
+        messagebox.showwarning('input status', 'please type something to search')
+    else:
+        query = r'SELECT id, first_name, last_name, age FROM customer WHERE first_name LIKE "' + search_word + '" OR last_name LIKE "' + search_word +'"'
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        update(rows)
+
+
+def clear():
+    trv.delete(*trv.get_children())
+    query = "SELECT id, first_name, last_name, age FROM customer "
+    cursor.execute(query)
+    row = cursor.fetchall()
+    update(row)
+
 def update(rows):
+    trv.delete(*trv.get_children())
     for i in rows:
         trv.insert('', tk.END, values=i,)
-
 
 
 # wrappers
@@ -43,16 +63,30 @@ trv.column(2, anchor=tk.W, )
 trv.column(3, anchor=tk.W,)
 trv.column(4, anchor=tk.W,)
 
-
-
-
-
 # mysql Query
-# query = "SELECT id, first_name, last_name, age FROM customer "
-# cursor.execute(query)
-# # row = cursor.fetchall()
-#
-# update(row)
+query = "SELECT id, first_name, last_name, age FROM customer "
+cursor.execute(query)
+row = cursor.fetchall()
+
+update(row)
+
+
+# Search Section
+label = ttk.Label(wrapper2, text='Search')
+label.pack(side=tk.LEFT, padx=10)
+
+entrydata = tk.StringVar()
+entry = ttk.Entry(wrapper2, textvariable=entrydata)
+entry.pack(side=tk.LEFT, padx=6)
+
+button = ttk.Button(wrapper2, text='Submit', command=search)
+button.pack(side=tk.LEFT, padx=6)
+
+clear_btn = ttk.Button(wrapper2, text='Clear', command=clear)
+clear_btn.pack(side=tk.LEFT, padx=6)
+
+
+# customer data section
 
 
 
