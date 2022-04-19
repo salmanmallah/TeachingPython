@@ -87,7 +87,20 @@ clear_btn.pack(side=tk.LEFT, padx=6)
 
 
 # customer data section
+fname_label = ttk.Label(wrapper3, text="First Name", font=('Roboto Mono', 10, 'bold'))
+fname_label.grid(column=0, row=0, padx=20, pady=5)
+fname_entry = ttk.Entry(wrapper3, width=15)
+fname_entry.grid(column=1, row=0, padx=10, pady=5)
 
+lname_label = ttk.Label(wrapper3, text="Last Name", font=('Roboto Mono', 10, 'bold'))
+lname_label.grid(column=0, row=1, padx=20, pady=5)
+lname_entry = ttk.Entry(wrapper3, width=15)
+lname_entry.grid(column=1, row=1, padx=10, pady=5)
+
+age_label = ttk.Label(wrapper3, text="Age", font=('Roboto Mono', 10, 'bold'))
+age_label.grid(column=0, row=2, padx=20, pady=5)
+age_entry = ttk.Entry(wrapper3, width=15)
+age_entry.grid(column=1, row=2, padx=10, pady=5)
 
 
 root.mainloop()
