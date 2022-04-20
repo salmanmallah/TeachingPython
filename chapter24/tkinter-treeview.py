@@ -68,6 +68,7 @@ def update_customer():
     cursor.execute('commit')
     clear()
 
+
 # add new customer function
 def add_customer():
     first_name = entry_two.get()
@@ -76,7 +77,13 @@ def add_customer():
     query = 'INSERT INTO customer (first_name, last_name, age) VALUES ("' + first_name + '", "' + last_name + '", "' + age + '")'
     cursor.execute(query)
     cursor.execute('commit')
+
+    # clear entry field
+    fname_entry.delete(0, tk.END)
+    lname_entry.delete(0, tk.END)
+    age_entry.delete(0, tk.END)
     clear()
+
 
 # get-row function
 def getrow(event):
@@ -87,6 +94,7 @@ def getrow(event):
     entry_two.set(item['values'][1])
     entry_three.set(item['values'][2])
     entry_four.set(item['values'][3])
+
 
 # wrappers
 wrapper1 = tk.LabelFrame(root, text='Customer List')
@@ -102,6 +110,7 @@ wrapper3.pack(fill='both', expand=True, padx=20, pady=10)
 trv = ttk.Treeview(wrapper1, columns=(1, 2, 3, 4), show='headings', height=6)
 trv.pack(fill='both', expand=True, padx=2, pady=2)
 
+
 # table header
 trv.heading(1, text='Customer ID', anchor=tk.W)
 trv.heading(2, text='First Name', anchor=tk.W)
@@ -113,6 +122,16 @@ trv.column(1, anchor=tk.W, width=20)
 trv.column(2, anchor=tk.W, )
 trv.column(3, anchor=tk.W, )
 trv.column(4, anchor=tk.W, )
+
+
+# Scroll-Bar of TreeView
+scrollbar = ttk.Scrollbar(trv, orient='vertical', command=trv.yview)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+# communicate back to the scrollbar
+trv.config(yscrollcommand=scrollbar.set)
+
+
 
 # mysql Query
 query = "SELECT id, first_name, last_name, age FROM customer "
