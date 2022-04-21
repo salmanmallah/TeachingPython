@@ -14,12 +14,12 @@ root.title('TreeView')
 # search function
 def search():
     global cursor
-    search_word = entrydata.get()
+    search_word = entry_data.get()
     if search_word == '':
         messagebox.showwarning('input status', 'please type something to search')
     else:
-        query = r'SELECT id, first_name, last_name, age FROM customer WHERE first_name LIKE "' + search_word + '" OR last_name LIKE "' + search_word + '"'
-        cursor.execute(query)
+        sqlQuery = r'SELECT id, first_name, last_name, age FROM customer WHERE first_name LIKE "' + search_word + '" OR last_name LIKE "' + search_word + '"'
+        cursor.execute(sqlQuery)
         rows = cursor.fetchall()
         update(rows)
 
@@ -27,10 +27,10 @@ def search():
 # clear function
 def clear():
     trv.delete(*trv.get_children())
-    query = "SELECT id, first_name, last_name, age FROM customer "
-    cursor.execute(query)
-    row = cursor.fetchall()
-    update(row)
+    sqlQuery = "SELECT id, first_name, last_name, age FROM customer "
+    cursor.execute(sqlQuery)
+    rows = cursor.fetchall()
+    update(rows)
 
 
 # update function
@@ -42,10 +42,10 @@ def update(rows):
 
 # delete function
 def delete_customer():
-    id = entry_one.get()
+    customer_id = entry_one.get()
     if messagebox.askyesno('comfirm Delete?', 'Are you sure you want to delete this customer?'):
-        query = r'DELETE FROM customer WHERE id="' + id + '"'
-        cursor.execute(query)
+        sqlQuery = r'DELETE FROM customer WHERE id="' + customer_id + '"'
+        cursor.execute(sqlQuery)
         cursor.execute('commit')
         clear()
         id_entry.delete(0, tk.END)
@@ -63,8 +63,8 @@ def update_customer():
     age = entry_four.get()
     print(customer_id, first_name, last_name, age)
 
-    query = 'UPDATE customer SET first_name= "' + first_name + '", last_name="' + last_name + '", age="' + age + '" WHERE id="' + customer_id + '"'
-    cursor.execute(query)
+    sqlQuery = 'UPDATE customer SET first_name= "' + first_name + '", last_name="' + last_name + '", age="' + age + '" WHERE id="' + customer_id + '"'
+    cursor.execute(sqlQuery)
     cursor.execute('commit')
     clear()
 
@@ -74,8 +74,8 @@ def add_customer():
     first_name = entry_two.get()
     last_name = entry_three.get()
     age = entry_four.get()
-    query = 'INSERT INTO customer (first_name, last_name, age) VALUES ("' + first_name + '", "' + last_name + '", "' + age + '")'
-    cursor.execute(query)
+    sqlQuery = 'INSERT INTO customer (first_name, last_name, age) VALUES ("' + first_name + '", "' + last_name + '", "' + age + '")'
+    cursor.execute(sqlQuery)
     cursor.execute('commit')
 
     # clear entry field
@@ -86,9 +86,9 @@ def add_customer():
 
 
 # get-row function
-def getrow(event):
+def get_rows(event):
     # global entry_one, entry_two, entry_three, entry_four
-    rowid = trv.identify_row(event.x)
+    # rowid = trv.identify_row(event.x)
     item = trv.item(trv.focus())
     entry_one.set(item['values'][0])
     entry_two.set(item['values'][1])
@@ -107,9 +107,8 @@ wrapper2.pack(fill='both', expand=True, padx=20, pady=10)
 wrapper3.pack(fill='both', expand=True, padx=20, pady=10)
 
 # TreeView
-trv = ttk.Treeview(wrapper1, columns=(1, 2, 3, 4), show='headings', height=6)
+trv = ttk.Treeview(wrapper1, columns=('1', '2', '3', '4'), show='headings', height=6)
 trv.pack(fill='both', expand=True, padx=2, pady=2)
-
 
 # table header
 trv.heading(1, text='Customer ID', anchor=tk.W)
@@ -123,15 +122,12 @@ trv.column(2, anchor=tk.W, )
 trv.column(3, anchor=tk.W, )
 trv.column(4, anchor=tk.W, )
 
-
 # Scroll-Bar of TreeView
 scrollbar = ttk.Scrollbar(trv, orient='vertical', command=trv.yview)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
 # communicate back to the scrollbar
 trv.config(yscrollcommand=scrollbar.set)
-
-
 
 # mysql Query
 query = "SELECT id, first_name, last_name, age FROM customer "
@@ -144,8 +140,8 @@ update(row)
 label = ttk.Label(wrapper2, text='Search')
 label.pack(side=tk.LEFT, padx=10)
 
-entrydata = tk.StringVar()
-entry = ttk.Entry(wrapper2, textvariable=entrydata)
+entry_data = tk.StringVar()
+entry = ttk.Entry(wrapper2, textvariable=entry_data)
 entry.pack(side=tk.LEFT, padx=6)
 
 button = ttk.Button(wrapper2, text='Submit', command=search)
@@ -190,6 +186,6 @@ add_button.grid(row=4, column=0, padx=5, pady=3)
 update_button.grid(row=4, column=1, padx=5, pady=3)
 delete_button.grid(row=4, column=2, padx=5, pady=3)
 
-trv.bind('<Double 1>', getrow)
+trv.bind('<Double 1>', get_rows)
 
 root.mainloop()
