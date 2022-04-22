@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+import sys
 import mysql.connector as mysql
+
 
 db = mysql.connect(host='localhost', user='root', password='', database='school')
 cursor = db.cursor()
