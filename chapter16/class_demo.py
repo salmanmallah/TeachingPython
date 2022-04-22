@@ -15,12 +15,12 @@ class Person:
     def __init__(self, firstname, lastname, age):
         # instance variables
         self.person_firstname = firstname
-        self.persone_lastnname = lastname
-        self.persone_age = age
+        self.person_lastname = lastname
+        self.person_age = age
 
 
 object1 = Person('salman', 'mallah', 22)
-object2 = Person('Noman','Mallah', 19)
+object2 = Person('Noman', 'Mallah', 19)
 
 
 print(object1.person_firstname)
